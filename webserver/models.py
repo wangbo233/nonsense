@@ -25,6 +25,7 @@ class Post(db.Model):
     content = db.Column(db.Text, nullable=False)
     pub_date = db.Column(db.DateTime,nullable=False, default = datetime.utcnow)
 
+    #user_id作为外键实现关联
     user_id = db.Column(db.Integer,db.ForeignKey('user.id'))
 
     '''

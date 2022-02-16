@@ -27,6 +27,15 @@
 </head>
 
 <body class="sticky-header">
+    {%with messages = get_flashed_messages(with_categories = true)%}
+    {% if messages %}
+        {% for category,message in messages %}
+        <div class="alert alert-{{category}}" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+    {%endif%}
+    {%endwith%}
     <!--[if lte IE 9]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   	<![endif]-->

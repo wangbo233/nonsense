@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
+    {%with messages = get_flashed_messages(with_categories = true)%}
+    {% if messages %}
+        {% for category,message in messages %}
+        <div class="alert alert-{{category}}" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+    {%endif%}
+    {%endwith%}
     <!-- partial:index.partial.html -->
     <div class="main-bg">
         <div class="box-conatiner">
@@ -24,6 +33,7 @@
                             Sign In
                         </span>
                         <form class="login100-form validate-form p-l-55 p-r-55 p-t-20" method="post">
+                            {{form.hidden_tag()}}
                             <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
                                 <!--input class="input100" type="text" name="username" placeholder="Username"-->
                                 {{form.email(class = "input100",placeholder="Email")}}
