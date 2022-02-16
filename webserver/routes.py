@@ -2,6 +2,7 @@ from webserver import app,db,brcypt
 from flask import Flask,render_template,redirect,flash,url_for,request,flash
 from webserver.form import LoginForm,RegisterForm
 from webserver.models import User
+from flask_login import login_user,current_user
 
 @app.route('/')
 def index():
@@ -9,15 +10,23 @@ def index():
 
 @app.route('/login',methods = ('GET','POST'))
 def login():
+    if current_user.is_authenticated:
+        return redirect("/")
     login_form = LoginForm()
     if login_form.validate_on_submit():
-        flash("登陆成功!",'success')
-        return redirect('/')
+        user = User.query.filter_by(email = login_form.email.data).first()
+        if user and brcypt.check_password_hash(user.password, login_form.password.data):
+            login_user(user,remember=login_form.remember.data)
+            return redirect('/')
+        else:
+            flash("登陆信息有误，请检查您的邮箱或密码！","danger")
     return render_template('login.html',form = login_form)
 
 
 @app.route('/register',methods=('GET','POST'))
 def register():
+    if current_user.is_authenticated:
+        return redirect("/")
     register_form = RegisterForm()
     if register_form.validate_on_submit():
     #if request.method=="POST":
