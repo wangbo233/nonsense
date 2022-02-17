@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,DateField,SelectField,BooleanField
+from wtforms import StringField,PasswordField,DateField,SelectField,BooleanField,TextAreaField
 from wtforms.validators import DataRequired,Email,EqualTo,Length,ValidationError
 from webserver.models import User,Post
 from flask_login import current_user
@@ -27,3 +27,6 @@ class RegisterForm(FlaskForm):
         if user:
             raise ValidationError("该邮箱已经被注册！请使用别的邮箱！")
 
+class PostForm(FlaskForm):
+    title = StringField("title",validators=[DataRequired()])
+    content = TextAreaField("content",validators=[DataRequired()])
