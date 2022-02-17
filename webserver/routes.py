@@ -1,7 +1,7 @@
 from webserver import app,db,brcypt
 from flask import Flask,render_template,redirect,flash,url_for,request,flash
-from webserver.form import LoginForm,RegisterForm,PostForm
-from webserver.models import User,Post
+from webserver.form import LoginForm,RegisterForm,BlogForm
+from webserver.models import User,Blog
 from flask_login import login_user,current_user,logout_user,login_required
 
 @app.route('/')
@@ -67,11 +67,17 @@ def blogs():
 @app.route('/blogs/new',methods=('GET','POST'))
 @login_required
 def new():
-    form = PostForm()
+    form = BlogForm()
     if form.validate_on_submit():
-        post = Post(title = form.title.data,content = form.content.data,author=current_user)
-        db.session.add(post)
+        blog = Blog(title = form.title.data,content = form.content.data,author=current_user)
+        db.session.add(blog)
         db.session.commit()
         flash("文章已经成功发表!","success")
         return redirect('/blogs')
     return render_template('new-blog.html',form = form)
+
+
+@app.route('/blogs/<int:blog_id>')
+def blog():
+    blog = Blog.query.get_or_404(blog_id)
+    return render_template('single-blog.html',title = blog.title,blog = blog)
