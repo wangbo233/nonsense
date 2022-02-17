@@ -13,6 +13,13 @@ class User(db.Model,UserMixin):
     email = db.Column(db.String(120),unique = True,nullable=False)
     password = db.Column(db.String(20),nullable=False)
     picture = db.Column(db.String(128))
+    hobbies = db.Column(db.Text)
+    favourite_music = db.Column(db.Text)
+    favourite_tv = db.Column(db.Text)
+    favourite_book = db.Column(db.Text)
+    favourite_movies = db.Column(db.Text)
+    other_activities = db.Column(db.Text)
+
 
     posts = db.relationship('Blog',backref=db.backref('author', lazy=True))
 
@@ -27,7 +34,7 @@ class Blog(db.Model):
 
     #user_id作为外键实现关联
     user_id = db.Column(db.Integer,db.ForeignKey('user.id'))
-    
+
     def __repr__(self):
         return f"Post:{self.title}"
 

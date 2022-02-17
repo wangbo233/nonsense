@@ -575,7 +575,7 @@
                                 <img src= "../static/user_pictures/{{current_user.picture}}" height="120" width="120">
                             </div>
                             <div class="media-body">
-                                <h3 class="item-title">Rebeca Powel</h3>
+                                <h3 class="item-title">{{current_user.username}}</h3>
                                 <div class="item-subtitle">United State of America</div>
                                 <ul class="item-social">
                                     <li><a href="#" class="bg-fb"><i class="icofont-facebook"></i></a></li>
@@ -597,12 +597,12 @@
                     <div class="col-lg-8">
                         <div class="block-box user-about">
                             <div class="widget-heading">
-                                <h3 class="widget-title">Hobbies and Interests</h3>
+                                <h3 class="widget-title">兴趣爱好</h3>
                                 <div class="dropdown">
                                     <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">...</button>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a class="dropdown-item" href="#">Close</a>
-                                        <a class="dropdown-item" href="#">Edit</a>
+                                        <a class="dropdown-item" href="/profile/edit">Edit</a>
                                         <a class="dropdown-item" href="#">Delete</a>
                                     </div>
                                 </div>
@@ -610,39 +610,30 @@
                             <ul class="user-info">
                                 <li>
                                     <label>My Hobbies:</label>
-                                    <p>when an unknown printer took a galley of type and scrambledmake a type specimen It has survived not only five centuries</p>
+                                    <p>{{current_user.hobbies}}</p>
                                 </li>
                                 <li>
                                     <label>Favourite Music Bands/Artists:</label>
-                                    <p>Iron Maid, DC/AC, Megablow, The Ill, Kung Fighters, System of a Revenge.</p>
+                                    <p>{{current_user.favourite_music}}</p>
                                 </li>
                                 <li>
                                     <label>Favourite TV Shows:</label>
-                                    <p>Breaking Good, RedDevil, People of Interest, The Running Dead, Found,</p>
+                                    <p>{{current_user.favourite_tv}}</p>
                                 </li>
                                 <li>
                                     <label>Favourite Books:</label>
-                                    <p>The Crime of the Century, Egiptian Mythology 101, The Scarred Wizard, Lord of the Wings, Amongst Gods, The Oracle, A Tale of Air and Water.</p>
+                                    <p>{{current_user.favourite_book}}</p>
                                 </li>
                                 <li>
                                     <label>Favourite Movies:</label>
-                                    <p>Idiocratic, The Scarred Wizard and the Fire Crown, Crime Squad, Ferrum Man.</p>
+                                    <p>{{current_user.favourite_movies}}</p>
                                 </li>
                                 <li>
                                     <label>Other Activities:</label>
-                                    <p>Swimming, Surfing, Scuba Diving, Anime, Photography, Tattoos, Street Art.</p>
+                                    <p>{{current_user.other_activities}}</p>
                                 </li>
                             </ul>
                         </div>
-                        <form method = "post" enctype = "multipart/form-data">
-                            {{form.hidden_tag()}}
-                            <div class="form-group">
-                                {{form.picture(class="form-control-file")}}
-                            </div>
-                            <div class="form-group">
-                                {{form.submit(class="btn btn-primary")}}
-                            </div>
-                        </form>
                         <div class="block-box user-about">
                             <div class="widget-heading">
                                 <h3 class="widget-title">Contact Info</h3>
@@ -797,9 +788,6 @@
                     <div class="footer-copyright">Copy© cirkle 2021. All Rights By <a href="http://www.bootstrapmb.com/">bootstrapmb</a></div>
                 </div>
             </footer>
-
-
-
         </div>
         <!-- Chat Modal Here -->
         <div class="chat-conversion-box" id="chat-box-modal" tabindex="-1" aria-labelledby="chat-modal-label" aria-hidden="true">

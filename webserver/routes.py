@@ -64,19 +64,34 @@ def save_picture(pic):
 
     return pic_filename
 
-@app.route('/account',methods = ['GET','POST'])
-@login_required
-def account():
+@app.route('/profile/edit',methods = ['GET','POST'])
+def edit_profile():
     form = UserInfoForm()
     if form.validate_on_submit():
         if form.picture.data:
             #这里是图片的路径
             picture_file = save_picture(form.picture.data)
             current_user.picture = picture_file
-            db.session.add(current_user)
-            #return render_template("user-about.html",form = form)
-    print(current_user.picture)
-    return render_template("user-about.html",form = form)
+        if form.hobbies.data:
+            current_user.hobbies = form.hobbies.data
+        if form.tv.data:
+            current_user.favourite_tv = form.tv.data
+        if form.movies.data:
+            current_user.favourite_movies = form.movies.data
+        if form.music.data:
+            current_user.favourite_music = form.music.data
+        if form.acts.data:
+            current_user.other_activities = form.acts.data
+        if form.books.data:
+            current_user.favourite_book = form.books.data
+        db.session.add(current_user)
+        db.session.commit()
+        return redirect('/account')
+    return render_template('user-info-update.html',form = form)
+
+@app.route('/account')
+def account():
+    return render_template("user-about.html")
 
 @app.route('/blogs')
 @login_required

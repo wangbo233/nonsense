@@ -30,8 +30,14 @@ class RegisterForm(FlaskForm):
             raise ValidationError("该邮箱已经被注册！请使用别的邮箱！")
 
 class UserInfoForm(FlaskForm):
-    picture = FileField("upload picture",validators=[FileAllowed(["jpg","png"])])
-    submit = SubmitField("更换头像")
+    picture = FileField("上传照片",validators=[FileAllowed(["jpg","png"])])
+    hobbies = StringField("My Hobbies:")
+    music = StringField("Favourite Music Bands/Artists:")
+    tv = StringField("Favourite TV Shows:")
+    books = StringField("Favourite Books:")
+    movies = StringField("Favourite Movies:")
+    acts = StringField("Other Activities:")
+    submit = SubmitField("提交")
 
 
 
