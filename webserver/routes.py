@@ -61,7 +61,9 @@ def account():
 @app.route('/blogs')
 @login_required
 def blogs():
-    return render_template('blogs.html')
+    blogs = Blog.query.all()
+    count = Blog.query.count()
+    return render_template('blogs.html', blogs = blogs, count=count)
 
 
 @app.route('/blogs/new',methods=('GET','POST'))
@@ -78,6 +80,6 @@ def new():
 
 
 @app.route('/blogs/<int:blog_id>')
-def blog():
+def blog(blog_id):
     blog = Blog.query.get_or_404(blog_id)
     return render_template('single-blog.html',title = blog.title,blog = blog)

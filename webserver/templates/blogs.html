@@ -568,7 +568,7 @@
             <div class="container">
                 <div class="block-box user-search-bar justify-content-between">
                     <div class="box-item">
-                        <div class="item-show-title">Total 20 Posts</div>
+                        <div class="item-show-title">Total {{count}} Posts</div>
                     </div>
                     <div class="box-item search-filter">
                         <div class="dropdown">
@@ -583,6 +583,7 @@
                     </div>
                 </div>
                 <div class="row gutters-20">
+                    {%for blog in blogs%}
                     <div class="col-lg-4 col-md-6">
                         <div class="block-box user-blog">
                             <div class="blog-img">
@@ -593,9 +594,8 @@
                                     <a href="#">Community</a>
                                     <a href="#">Inspiration</a>
                                 </div>
-                                <h3 class="blog-title"><a href="#">Spoke with the developer sety 2020 Gaming Area</a></h3>
+                                <h3 class="blog-title"><a href="/blogs/{{blog.id}}">{{blog.title}}</a></h3>
                                 <div class="blog-date"><i class="icofont-calendar"></i> 15 October, 2020</div>
-                                <p>when ann unknown printer took galley type and scrambled it to make aretype specimen book has survived not only.</p>
                             </div>
                             <div class="blog-meta">
                                 <ul>
@@ -612,150 +612,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="block-box user-blog">
-                            <div class="blog-img">
-                                <a href="#"><img src="../static/media/blog/blog_5.jpg" alt="Blog"></a>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-category">
-                                    <a href="#">Sporty</a>
-                                </div>
-                                <h3 class="blog-title"><a href="#">Spoke with the developer sety 2020 Gaming Area</a></h3>
-                                <div class="blog-date"><i class="icofont-calendar"></i> 15 October, 2020</div>
-                                <p>when ann unknown printer took galley type and scrambled it to make aretype specimen book has survived not only.</p>
-                            </div>
-                            <div class="blog-meta">
-                                <ul>
-                                    <li class="blog-reaction">
-                                        <div class="reaction-icon">
-                                            <img src="../static/media/figure/reaction_1.png" alt="icon">
-                                            <img src="../static/media/figure/reaction_2.png" alt="icon">
-                                            <img src="../static/media/figure/reaction_3.png" alt="icon">
-                                        </div>
-                                        <div class="meta-text">+ 15 others</div>
-                                    </li>
-                                    <li><i class="icofont-comment"></i> 05</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="block-box user-blog">
-                            <div class="blog-img">
-                                <a href="#"><img src="../static/media/blog/blog_6.jpg" alt="Blog"></a>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-category">
-                                    <a href="#">Community</a>
-                                    <a href="#">Inspiration</a>
-                                </div>
-                                <h3 class="blog-title"><a href="#">Spoke with the developer sety 2020 Gaming Area</a></h3>
-                                <div class="blog-date"><i class="icofont-calendar"></i> 15 October, 2020</div>
-                                <p>when ann unknown printer took galley type and scrambled it to make aretype specimen book has survived not only.</p>
-                            </div>
-                            <div class="blog-meta">
-                                <ul>
-                                    <li class="blog-reaction">
-                                        <div class="reaction-icon">
-                                            <img src="../static/media/figure/reaction_1.png" alt="icon">
-                                            <img src="../static/media/figure/reaction_2.png" alt="icon">
-                                            <img src="../static/media/figure/reaction_3.png" alt="icon">
-                                        </div>
-                                        <div class="meta-text">+ 15 others</div>
-                                    </li>
-                                    <li><i class="icofont-comment"></i> 05</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="block-box user-blog">
-                            <div class="blog-img">
-                                <a href="#"><img src="../static/media/blog/blog_7.jpg" alt="Blog"></a>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-category">
-                                    <a href="#">Community</a>
-                                    <a href="#">Inspiration</a>
-                                </div>
-                                <h3 class="blog-title"><a href="#">Spoke with the developer sety 2020 Gaming Area</a></h3>
-                                <div class="blog-date"><i class="icofont-calendar"></i> 15 October, 2020</div>
-                                <p>when ann unknown printer took galley type and scrambled it to make aretype specimen book has survived not only.</p>
-                            </div>
-                            <div class="blog-meta">
-                                <ul>
-                                    <li class="blog-reaction">
-                                        <div class="reaction-icon">
-                                            <img src="../static/media/figure/reaction_1.png" alt="icon">
-                                            <img src="../static/media/figure/reaction_2.png" alt="icon">
-                                            <img src="../static/media/figure/reaction_3.png" alt="icon">
-                                        </div>
-                                        <div class="meta-text">+ 15 others</div>
-                                    </li>
-                                    <li><i class="icofont-comment"></i> 05</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="block-box user-blog">
-                            <div class="blog-img">
-                                <a href="#"><img src="../static/media/blog/blog_8.jpg" alt="Blog"></a>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-category">
-                                    <a href="#">Community</a>
-                                    <a href="#">Inspiration</a>
-                                </div>
-                                <h3 class="blog-title"><a href="#">Spoke with the developer sety 2020 Gaming Area</a></h3>
-                                <div class="blog-date"><i class="icofont-calendar"></i> 15 October, 2020</div>
-                                <p>when ann unknown printer took galley type and scrambled it to make aretype specimen book has survived not only.</p>
-                            </div>
-                            <div class="blog-meta">
-                                <ul>
-                                    <li class="blog-reaction">
-                                        <div class="reaction-icon">
-                                            <img src="../static/media/figure/reaction_1.png" alt="icon">
-                                            <img src="../static/media/figure/reaction_2.png" alt="icon">
-                                            <img src="../static/media/figure/reaction_3.png" alt="icon">
-                                        </div>
-                                        <div class="meta-text">+ 15 others</div>
-                                    </li>
-                                    <li><i class="icofont-comment"></i> 05</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="block-box user-blog">
-                            <div class="blog-img">
-                                <a href="#"><img src="../static/media/blog/blog_9.jpg" alt="Blog"></a>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-category">
-                                    <a href="#">Community</a>
-                                    <a href="#">Inspiration</a>
-                                </div>
-                                <h3 class="blog-title"><a href="#">Spoke with the developer sety 2020 Gaming Area</a></h3>
-                                <div class="blog-date"><i class="icofont-calendar"></i> 15 October, 2020</div>
-                                <p>when ann unknown printer took galley type and scrambled it to make aretype specimen book has survived not only.</p>
-                            </div>
-                            <div class="blog-meta">
-                                <ul>
-                                    <li class="blog-reaction">
-                                        <div class="reaction-icon">
-                                            <img src="../static/media/figure/reaction_1.png" alt="icon">
-                                            <img src="../static/media/figure/reaction_2.png" alt="icon">
-                                            <img src="../static/media/figure/reaction_3.png" alt="icon">
-                                        </div>
-                                        <div class="meta-text">+ 15 others</div>
-                                    </li>
-                                    <li><i class="icofont-comment"></i> 05</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    {%endfor%}
                 </div>
                 <div class="load-more-post">
                     <a href="#" class="item-btn"><i class="icofont-refresh"></i>Load More Posts</a>
