@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,DateField,SelectField,BooleanField,TextAreaField
+from flask_wtf.file import FileField,FileAllowed
+from wtforms import StringField,PasswordField,DateField,SelectField,BooleanField,TextAreaField,SubmitField
 from wtforms.validators import DataRequired,Email,EqualTo,Length,ValidationError
 from webserver.models import User,Blog
 from flask_login import current_user
@@ -16,6 +17,7 @@ class RegisterForm(FlaskForm):
     email = StringField('email',validators=[DataRequired("请输入邮箱"),Email()])
     password = PasswordField('password',validators=[DataRequired("请输入密码")])
     password_confirmation = PasswordField('password_confirmaiton',validators=[DataRequired("请再次输入您的密码"),EqualTo('password')])
+    #picture = FileField('picture',validators=[FileAllowed(["jpg","png"]))
 
     def validate_username(self, username):
         user = User.query.filter_by(username = username.data).first()
@@ -26,6 +28,12 @@ class RegisterForm(FlaskForm):
         user = User.query.filter_by(email = email.data).first()
         if user:
             raise ValidationError("该邮箱已经被注册！请使用别的邮箱！")
+
+class UserInfoForm(FlaskForm):
+    picture = FileField("upload picture",validators=[FileAllowed(["jpg","png"])])
+    submit = SubmitField("更换头像")
+
+
 
 class BlogForm(FlaskForm):
     title = StringField("title",validators=[DataRequired()])

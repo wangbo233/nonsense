@@ -361,7 +361,7 @@
                                 <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                     <span class="media">
                                         <span class="item-img">
-                                            <img src="../static/media/figure/chat_5.jpg" alt="Chat">
+                                            <img src="../static/user_pictures/{{current_user.picture}}" alt="Chat" height="50" width="50">
                                             <span class="acc-verified"><i class="icofont-check"></i></span>
                                         </span>
                                         <span class="media-body">
@@ -571,7 +571,8 @@
                     <div class="banner-content">
                         <div class="media">
                             <div class="item-img">
-                                <img src="../static/media/banner/user_1.jpg" alt="User">
+                                <!--img src="../static/media/banner/user_1.jpg" alt="User"-->
+                                <img src= "../static/user_pictures/{{current_user.picture}}" height="120" width="120">
                             </div>
                             <div class="media-body">
                                 <h3 class="item-title">Rebeca Powel</h3>
@@ -591,31 +592,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="block-box user-top-header">
-                    <ul class="menu-list">
-                        <li class="active"><a href="#">Timeline</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Friends</a></li>
-                        <li><a href="#">Groups</a></li>
-                        <li><a href="#">Photos</a></li>
-                        <li><a href="#">Videos</a></li>
-                        <li><a href="#">Badges</a></li>
-                        <li><a href="#">Blogs</a></li>
-                        <li><a href="#">Forums</a></li>
-                        <li>
-                            <div class="dropdown">
-                                <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    ...
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#">Shop</a>
-                                    <a class="dropdown-item" href="#">Blog</a>
-                                    <a class="dropdown-item" href="#">Others</a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
                 <div class="row">
                     <div class="col-lg-8">
@@ -658,37 +634,15 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="block-box user-about">
-                            <div class="widget-heading">
-                                <h3 class="widget-title">Education and Employment</h3>
-                                <div class="dropdown">
-                                    <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">...</button>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#">Close</a>
-                                        <a class="dropdown-item" href="#">Edit</a>
-                                        <a class="dropdown-item" href="#">Delete</a>
-                                    </div>
-                                </div>
+                        <form method = "post" enctype = "multipart/form-data">
+                            {{form.hidden_tag()}}
+                            <div class="form-group">
+                                {{form.picture(class="form-control-file")}}
                             </div>
-                            <ul class="user-info">
-                                <li>
-                                    <label>Education:</label>
-                                    <p>The New College of Design</p>
-                                </li>
-                                <li>
-                                    <label>Institution:</label>
-                                    <p>Radiustheme.com</p>
-                                </li>
-                                <li>
-                                    <label>Employment:</label>
-                                    <p>UI/UX Designer</p>
-                                </li>
-                                <li>
-                                    <label>Year:</label>
-                                    <p>2008-2020</p>
-                                </li>
-                            </ul>
-                        </div>
+                            <div class="form-group">
+                                {{form.submit(class="btn btn-primary")}}
+                            </div>
+                        </form>
                         <div class="block-box user-about">
                             <div class="widget-heading">
                                 <h3 class="widget-title">Contact Info</h3>

@@ -1,8 +1,10 @@
 from webserver import app,db,brcypt
 from flask import Flask,render_template,redirect,flash,url_for,request,flash
-from webserver.form import LoginForm,RegisterForm,BlogForm
+from webserver.form import LoginForm,RegisterForm,BlogForm,UserInfoForm
 from webserver.models import User,Blog
 from flask_login import login_user,current_user,logout_user,login_required
+import secrets
+import os
 
 @app.route('/')
 def index():
@@ -53,10 +55,28 @@ def logout():
     logout_user()
     return redirect(url_for("index"))
 
-@app.route('/account')
+def save_picture(pic):
+    random_hex = secrets.token_hex(8)
+    _,filename_extension = os.path.split(pic.filename)
+    pic_filename = random_hex+filename_extension
+    pic_path = os.path.join(app.root_path,"static/user_pictures",pic_filename)
+    pic.save(pic_path)
+
+    return pic_filename
+
+@app.route('/account',methods = ['GET','POST'])
 @login_required
 def account():
-    return render_template("user-about.html")
+    form = UserInfoForm()
+    if form.validate_on_submit():
+        if form.picture.data:
+            #这里是图片的路径
+            picture_file = save_picture(form.picture.data)
+            current_user.picture = picture_file
+            db.session.add(current_user)
+            #return render_template("user-about.html",form = form)
+    print(current_user.picture)
+    return render_template("user-about.html",form = form)
 
 @app.route('/blogs')
 @login_required
