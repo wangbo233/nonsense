@@ -2,7 +2,7 @@ from webserver import app,db,brcypt
 from flask import Flask,render_template,redirect,flash,url_for,request,flash
 from webserver.form import LoginForm,RegisterForm
 from webserver.models import User
-from flask_login import login_user,current_user
+from flask_login import login_user,current_user,logout_user,login_required
 
 @app.route('/')
 def index():
@@ -47,3 +47,13 @@ def register():
         flash("注册成功!",'success')
         return redirect('/login')
     return render_template('register.html',form = register_form)
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for("index"))
+
+@app.route('/account')
+@login_required
+def account():
+    return render_template("user-about.html")

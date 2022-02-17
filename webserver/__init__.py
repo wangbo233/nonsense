@@ -12,3 +12,4 @@ app.config["SECRET_KEY"] = "jdiah-9?lq-wdcq>"
 db = SQLAlchemy(app)
 brcypt = Bcrypt()
 login_manager = LoginManager(app)
+login_manager.login_view = "login"

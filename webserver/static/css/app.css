@@ -622,7 +622,7 @@ h6 {
     margin-top: -97px;
     padding: 185px 0 95px;
     background-color: #615dfa;
-    background-image: url("../../media/banner/hero_1.jpg");
+    background-image: url("../media/banner/hero_1.jpg");
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
@@ -732,7 +732,7 @@ h6 {
 }
 
 .footer-wrap:before {
-    content: url("../../media/figure/footer_shape.png");
+    content: url("../media/figure/footer_shape.png");
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -2457,7 +2457,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .fixed-header .header-control .dropdown-friend .dropdown-menu .item-body .media .item-img:after {
-    content: url("../../media/figure/chat_round_shape3.png");
+    content: url("../media/figure/chat_round_shape3.png");
     position: absolute;
     top: -5px;
     left: -5px;
@@ -2673,7 +2673,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .fixed-header .header-control .dropdown-admin .dropdown-toggle .item-img:after {
-    content: url("../../media/figure/chat_round_shape4.png");
+    content: url("../media/figure/chat_round_shape4.png");
     position: absolute;
     top: -5px;
     left: -5px;
@@ -3175,7 +3175,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .fixed-sidebar.right .user-chat-list .chat-item .author-img:before {
-    content: url("../../media/figure/chat_round_shape2.png");
+    content: url("../media/figure/chat_round_shape2.png");
     position: absolute;
     top: -5px;
     left: -5px;
@@ -3190,7 +3190,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .fixed-sidebar.right .user-chat-list .chat-item .author-img:after {
-    content: url("../../media/figure/chat_round_shape.png");
+    content: url("../media/figure/chat_round_shape.png");
     position: absolute;
     top: -5px;
     left: -5px;
@@ -3770,7 +3770,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 /*------------------- 4.8 Preloader -------------------*/
 #preloader {
-    background: #ffffff url("../../media/preloader.gif") no-repeat scroll center center;
+    background: #ffffff url("../media/preloader.gif") no-repeat scroll center center;
     height: 100%;
     left: 0;
     overflow: visible;
@@ -4030,7 +4030,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .about-us .about-us-img .item-img:after {
-    content: url("../../media/about/shape_1.png");
+    content: url("../media/about/shape_1.png");
     position: absolute;
     right: -10px;
     bottom: -55px;
@@ -4142,7 +4142,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .hero-banner:before {
-    content: url("../../media/banner/hero_1.jpg");
+    content: url("../media/banner/hero_1.jpg");
     position: absolute;
     top: 0;
     left: 0;
@@ -4522,7 +4522,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .banner-apps:before {
-    content: url("../../media/banner/shape_2.png");
+    content: url("../media/banner/shape_2.png");
     position: absolute;
     bottom: 0;
     left: -20px;
@@ -4596,7 +4596,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .banner-apps .banner-img:before {
-    content: url("../../media/banner/shape_3.png");
+    content: url("../media/banner/shape_3.png");
     position: absolute;
     top: 0;
     right: 30px;
@@ -4610,7 +4610,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .banner-apps .banner-img:after {
-    content: url("../../media/banner/shape_4.png");
+    content: url("../media/banner/shape_4.png");
     position: absolute;
     bottom: 70px;
     left: 10px;
@@ -4623,7 +4623,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .banner-apps .banner-img .apps-view:before {
-    content: url("../../media/banner/shape_5.png");
+    content: url("../media/banner/shape_5.png");
     position: absolute;
     top: 30px;
     left: 30px;
@@ -4632,7 +4632,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .banner-apps .banner-img .apps-view:after {
-    content: url("../../media/banner/shape_6.png");
+    content: url("../media/banner/shape_6.png");
     position: absolute;
     bottom: 25%;
     right: 60px;
@@ -4752,7 +4752,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 .community-network {
     background-color: #f6f6f6;
     padding: 125px 0;
-    background-image: url("../../media/figure/map_1.png");
+    background-image: url("../media/figure/map_1.png");
     background-repeat: no-repeat;
     background-position: bottom left;
     position: relative;
@@ -5471,7 +5471,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 /*------------------- 5.9 Testimonial -------------------*/
 .testimonial-carousel {
     padding: 120px 0 100px;
-    background-image: url("../../media/testimonial/bg_1.jpg");
+    background-image: url("../media/testimonial/bg_1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
@@ -5491,7 +5491,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .testimonial-carousel:before {
-    content: url("../../media/testimonial/shape_2.png");
+    content: url("../media/testimonial/shape_2.png");
     position: absolute;
     right: 18%;
     top: 0;
@@ -5545,7 +5545,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .testimonial-carousel .slick-nav .nav-item:before {
-    content: url("../../media/testimonial/shape_1.png");
+    content: url("../media/testimonial/shape_1.png");
     position: absolute;
     top: 0;
     left: 0;
@@ -5695,7 +5695,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .why-choose-fluid .why-choose-content:before {
-    content: url("../../media/figure/shape_6.png");
+    content: url("../media/figure/shape_6.png");
     position: absolute;
     top: 0;
     bottom: 0;
@@ -5705,7 +5705,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .why-choose-fluid .why-choose-content:after {
-    content: url("../../media/figure/multi_shape.png");
+    content: url("../media/figure/multi_shape.png");
     position: absolute;
     top: 0;
     right: 35px;
@@ -5924,7 +5924,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 .login-page-wrap .content-wrap {
     height: 100%;
-    background-image: url("../../media/banner/hero_1.jpg");
+    background-image: url("../media/banner/hero_1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -6479,7 +6479,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .banner-user {
-    background-image: url("../../media/banner/banner_user.jpg");
+    background-image: url("../media/banner/banner_user.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 8px;
@@ -6556,7 +6556,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .banner-user .media .item-img:after {
-    content: url("../../media/banner/round_shape1.png");
+    content: url("../media/banner/round_shape1.png");
     position: absolute;
     top: -9px;
     left: -8px;
@@ -6652,7 +6652,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .banner-forum {
-    background-image: url("../../media/banner/banner_forum.jpg");
+    background-image: url("../media/banner/banner_forum.jpg");
 }
 
 .banner-forum .media .media-body .item-title:before {
@@ -6664,7 +6664,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .banner-user-group {
-    background-image: url("../../media/banner/banner_group.jpg");
+    background-image: url("../media/banner/banner_group.jpg");
 }
 
 .banner-user-group .media .media-body .item-title:before {
@@ -6794,7 +6794,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .forum-post-input .media .item-img:after {
-    content: url("../../media/figure/chat_round_shape3.png");
+    content: url("../media/figure/chat_round_shape3.png");
     position: absolute;
     top: 0;
     left: 0;
@@ -7403,7 +7403,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .post-view .post-header .media .user-img:after {
-    content: url("../../media/figure/chat_round_shape.png");
+    content: url("../media/figure/chat_round_shape.png");
     position: absolute;
     top: 0;
     left: 0;
@@ -8279,7 +8279,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .post-view .post-comment .post-header .media .user-img:after {
-    content: url("../../media/figure/chat_round_shape3.png");
+    content: url("../media/figure/chat_round_shape3.png");
     top: 1px;
     left: 1px;
 }
@@ -8386,7 +8386,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .post-view .post-comment .comment-reply .user-img:after {
-    content: url("../../media/figure/chat_round_shape3.png");
+    content: url("../media/figure/chat_round_shape3.png");
     position: absolute;
     top: 1px;
     left: 1px;
@@ -8507,7 +8507,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 .product-breadcrumb {
     padding: 130px 0;
-    background-image: url("../../media/figure/product_breadcrum.jpg");
+    background-image: url("../media/figure/product_breadcrum.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -10958,7 +10958,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .widget-author .profile-img a:before {
-    content: url("../../media/figure/chat_round_shape5.png");
+    content: url("../media/figure/chat_round_shape5.png");
     position: absolute;
     top: -8px;
     left: -8px;
@@ -11154,7 +11154,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .widget-memebers .media .item-img a:before {
-    content: url("../../media/figure/chat_round_shape.png");
+    content: url("../media/figure/chat_round_shape.png");
     position: absolute;
     top: -5px;
     left: -5px;
@@ -11163,7 +11163,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .widget-memebers .media .item-img a:after {
-    content: url("../../media/figure/chat_round_shape2.png");
+    content: url("../media/figure/chat_round_shape2.png");
     position: absolute;
     top: -5px;
     left: -5px;
@@ -11361,7 +11361,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .widget-banner:after {
-    content: url("../../media/figure/square_shape.png");
+    content: url("../media/figure/square_shape.png");
     position: absolute;
     top: 0;
     left: 0;
