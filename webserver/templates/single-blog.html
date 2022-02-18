@@ -601,6 +601,13 @@
                             <p class = "article-content">
                                 {{blog.content}}
                             </p>
+                            {%if blog.author == current_user%}
+                                <div>
+                                    <a class="btn btn-secondary btn-sm m-1" href="/blogs/{{blog.id}}/update">
+                                        更新文章
+                                    </a>
+                                </div>
+                            {%endif%}
                         </div>
                         <div class="blog-footer">
                             <div class="item-label">Choose your <span>Reaction!</span></div>

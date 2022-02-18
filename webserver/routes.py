@@ -1,5 +1,5 @@
 from webserver import app,db,brcypt
-from flask import Flask,render_template,redirect,flash,url_for,request,flash
+from flask import Flask,render_template,redirect,flash,url_for,request,flash,abort
 from webserver.form import LoginForm,RegisterForm,BlogForm,UserInfoForm
 from webserver.models import User,Blog
 from flask_login import login_user,current_user,logout_user,login_required
@@ -111,10 +111,27 @@ def new():
         db.session.commit()
         flash("文章已经成功发表!","success")
         return redirect('/blogs')
-    return render_template('new-blog.html',form = form)
+    return render_template('new-blog.html',form=form,subject="发布一篇新文章")
 
 
 @app.route('/blogs/<int:blog_id>')
 def blog(blog_id):
     blog = Blog.query.get_or_404(blog_id)
     return render_template('single-blog.html',title = blog.title,blog = blog)
+
+@app.route('/blogs/<int:blog_id>/update',methods = ['GET','POST'])
+@login_required
+def update_blog(blog_id):
+    blog = Blog.query.get_or_404(blog_id)
+    if blog.author != current_user:
+        abort(403)
+    form = BlogForm()
+    if form.validate_on_submit():
+        blog.title = form.title.data
+        blog.content = form.content.data
+        db.session.commit()
+        return redirect(f'/blogs/{blog.id}')
+    elif request.method == "GET":
+        form.title.data = blog.title
+        form.content.data = blog.content
+    return render_template('new-blog.html',form=form,subject = "更新文章")
