@@ -117,7 +117,7 @@ def new():
 @app.route('/blogs/<int:blog_id>')
 def blog(blog_id):
     blog = Blog.query.get_or_404(blog_id)
-    return render_template('single-blog.html',title = blog.title,blog = blog)
+    return render_template('single-blog.html',title = blog.title,blog =blog)
 
 @app.route('/blogs/<int:blog_id>/update',methods = ['GET','POST'])
 @login_required
@@ -135,3 +135,13 @@ def update_blog(blog_id):
         form.title.data = blog.title
         form.content.data = blog.content
     return render_template('new-blog.html',form=form,subject = "更新文章")
+
+@app.route('/blogs/<int:blog_id>/delete',methods = ['POST'])
+@login_required
+def delete_blog(blog_id):
+    blog = Blog.query.get_or_404(blog_id)
+    if blog.author != current_user:
+        abort(403)
+    db.session.delete(blog)
+    db.session.commit()
+    return redirect('/')
