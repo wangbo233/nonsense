@@ -1,0 +1,53 @@
+@charset "utf-8";
+/* CSS rest */
+body{font-size:12px;font-family:"微软雅黑";}
+*{margin:0;padding:0;}
+a{text-decoration:none;}
+ul,li,ol{list-style:none;}
+img{border:none;}
+input,select{vertical-align:middle;}
+table{border-collapse:collapse;border-spacing:0;}caption,th{text-align:left;font-weight:normal;}.tl{ text-align:left !important;}
+.none{display:none;}
+.le{float:left;}
+.ri{float:right;}
+body{width:100%;height:auto;background:url(../imgs/banner_02.jpg) #4365b3 no-repeat 50% 0;}
+.logo,.mainbody,.footer{width:1003px;margin:0 auto;overflow:hidden;}
+.artist h2,.message_board h2{
+	height:80px;
+	line-height:80px;
+	font-size:26px;
+	font-weight:500;
+	color:#dadada;
+	text-align:center;
+}
+.member{height:auto;overflow:hidden;}
+.member li{width:250px;height:231px;text-align:center;float:left;margin-bottom:15px;}
+
+.member li img{
+	width:145px;
+	height:145px;
+	border:5px solid #fff;
+	border-radius:50%;            /* W3C syntax */
+	
+	transition: border-radius 1s;
+	-moz-transition: border-radius 1s;	/* Firefox 4 */
+	-webkit-transition: border-radius 1s;	/* Safari 和 Chrome */
+	-o-transition: border-radius 1s;	/* Opera */
+
+	style.mozBorderRadius:50%;
+	style.webkitBorderRadius:50%;
+    
+}
+.member li img:hover
+{
+	style.mozBorderRadius:0;
+	style.webkitBorderRadius:0;
+    border-radius:0;
+}
+.member p{
+	font-family:"时尚中黑简体";
+	line-height:24px;
+	color:#fff;
+	font-size:14px;
+}
+.member p span{font-size:16px;}

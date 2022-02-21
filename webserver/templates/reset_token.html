@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login登录页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='../static/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    {%with messages = get_flashed_messages(with_categories = true)%}
+    {% if messages %}
+        {% for category,message in messages %}
+        <div class="alert alert-{{category}}" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+    {%endif%}
+    {%endwith%}
+    <!-- partial:index.partial.html -->
+    <div class="main-bg">
+        <div class="box-conatiner">
+            <div id="a">
+                <div class="circle-ripple"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <h1 class="heading-left">请输入您的新密码</h1>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="wrap-login100">
+                        <span class="login100-form-title">
+                            请输入您的新密码
+                        </span>
+                        <form class="login100-form validate-form p-l-55 p-r-55 p-t-20" method="post">
+                            {{form.hidden_tag()}}
+                            <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+                                <!--input class="input100" type="text" name="username" placeholder="Username"-->
+                                {{form.password(class = "input100",placeholder="Your Password Here")}}
+                                <span class="focus-input100"></span>
+                            </div>
+                            <div class="wrap-input100 validate-input" data-validate="Please enter password">
+                                <!--input class="input100" type="password" name="pass" placeholder="Password"-->
+                                {{form.password_confirmation(class="input100",placeholder="Your Password confirmation Here")}}
+                                <span class="focus-input100"></span>
+                            </div>
+                            <div class="text-right p-t-13 p-b-23">
+                            </div>
+                            <div class="container-login100-form-btn">
+                                <button class="login100-form-btn">
+                                    点击重置密码
+                                </button>
+                            </div>
+                            <div class="flex-col-c p-t-13 p-b-40">
+                                <span class="txt1 p-b-9">
+                                    还没有自己的账户？
+                                </span>
+                                <a href="#" class="txt3">
+                                    现在注册一个！
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- partial -->
+</body>
+</html>

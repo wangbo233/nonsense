@@ -44,3 +44,16 @@ class UserInfoForm(FlaskForm):
 class BlogForm(FlaskForm):
     title = StringField("title",validators=[DataRequired()])
     content = TextAreaField("content",validators=[DataRequired()])
+
+class RequestRestForm(FlaskForm):
+    email = StringField('email',validators=[DataRequired(message="请输入邮箱"),Email()])
+    
+    def validate_email(self, email):
+        user = User.query.filter_by(email = email.data).first()
+        if user is None:
+            raise ValidationError('找不到该邮箱指定的用户')
+
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField('password',validators=[DataRequired("请输入密码")])
+    password_confirmation = PasswordField('password_confirmaiton',validators=[DataRequired("请再次输入您的密码"),EqualTo('password')])
+
