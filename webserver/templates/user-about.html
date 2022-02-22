@@ -361,7 +361,7 @@
                                 <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                     <span class="media">
                                         <span class="item-img">
-                                            <img src="../static/user_pictures/{{current_user.picture}}" alt="Chat" height="50" width="50">
+                                            <img src="../static/user_pictures/{{user.picture}}" alt="Chat" height="50" width="50">
                                             <span class="acc-verified"><i class="icofont-check"></i></span>
                                         </span>
                                         <span class="media-body">
@@ -572,22 +572,26 @@
                         <div class="media">
                             <div class="item-img">
                                 <!--img src="../static/media/banner/user_1.jpg" alt="User"-->
-                                <img src= "../static/user_pictures/{{current_user.picture}}" height="120" width="120">
+                                <img src= "../static/user_pictures/{{user.picture}}" height="120" width="120">
                             </div>
                             <div class="media-body">
-                                <h3 class="item-title">{{current_user.username}}</h3>
-                                <div class="item-subtitle">United State of America</div>
-                                <ul class="item-social">
-                                    <li><a href="#" class="bg-fb"><i class="icofont-facebook"></i></a></li>
-                                    <li><a href="#" class="bg-twitter"><i class="icofont-twitter"></i></a></li>
-                                    <li><a href="#" class="bg-dribble"><i class="icofont-dribbble"></i></a></li>
-                                    <li><a href="#" class="bg-youtube"><i class="icofont-brand-youtube"></i></a></li>
-                                    <li><a href="#" class="bg-behance"><i class="icofont-behance"></i></a></li>
-                                </ul>
+                                <h3 class="item-title">{{user.username}}</h3>
+                                <div>
+                                    {%if current_user == user%}
+                                    {%elif current_user.is_following(user) %}
+                                        <a class="btn btn-secondary btn-sm m-1" href="{{ url_for('unfollow',username = user.username) }}">
+                                            取消关注
+                                        </a>
+                                    {%else%}
+                                        <a class="btn btn-secondary btn-sm m-1" href="{{ url_for('follow',username = user.username) }}">
+                                            点击关注
+                                        </a>
+                                    {%endif%}
+                                </div>
                                 <ul class="user-meta">
-                                    <li>Posts: <span>30</span></li>
-                                    <li>Comments: <span>12</span></li>
-                                    <li>Views: <span>1.2k</span></li>
+                                    <li>博客数: <span>{{user.posts |length}}</span></li>
+                                    <li>关注: <span>{{user.followed.count()}}</span></li>
+                                    <li>粉丝: <span>{{user.followers.count()}}</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -610,27 +614,27 @@
                             <ul class="user-info">
                                 <li>
                                     <label>My Hobbies:</label>
-                                    <p>{{current_user.hobbies}}</p>
+                                    <p>{{user.hobbies}}</p>
                                 </li>
                                 <li>
                                     <label>Favourite Music Bands/Artists:</label>
-                                    <p>{{current_user.favourite_music}}</p>
+                                    <p>{{user.favourite_music}}</p>
                                 </li>
                                 <li>
                                     <label>Favourite TV Shows:</label>
-                                    <p>{{current_user.favourite_tv}}</p>
+                                    <p>{{user.favourite_tv}}</p>
                                 </li>
                                 <li>
                                     <label>Favourite Books:</label>
-                                    <p>{{current_user.favourite_book}}</p>
+                                    <p>{{user.favourite_book}}</p>
                                 </li>
                                 <li>
                                     <label>Favourite Movies:</label>
-                                    <p>{{current_user.favourite_movies}}</p>
+                                    <p>{{user.favourite_movies}}</p>
                                 </li>
                                 <li>
                                     <label>Other Activities:</label>
-                                    <p>{{current_user.other_activities}}</p>
+                                    <p>{{user.other_activities}}</p>
                                 </li>
                             </ul>
                         </div>

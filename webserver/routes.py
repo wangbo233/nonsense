@@ -84,12 +84,18 @@ def edit_profile():
             current_user.favourite_book = form.books.data
         db.session.add(current_user)
         db.session.commit()
-        return redirect('/account')
+        return redirect('user',username=user.username)
     return render_template('user-info-update.html',form = form)
 
-@app.route('/account')
-def account():
-    return render_template("user-about.html")
+#用户的个人主页
+@app.route('/user/<username>')
+@login_required
+def user(username):
+    user = User.query.filter_by(username = username).first()
+    if user is None:
+        flash("该用户不存在",'info')
+        return redirect(url_for('index'))
+    return render_template("user-about.html",user = user)
 
 @app.route('/blogs')
 @login_required
@@ -101,7 +107,7 @@ def blogs():
     return render_template('blogs.html', blogs = blogs, count=count)
 
 
-@app.route('/user/<string:username>')
+@app.route('/blog/<string:username>')
 @login_required
 def user_blogs(username):
     page = request.args.get('page',1,type=int)
@@ -209,4 +215,33 @@ def reset_token(token):
         flash("修改密码成功!",'success')
         return redirect('/login')
     return render_template('reset_token.html',title = "输入新密码",form = form)
+
+@app.route('/follow/<username>')
+@login_required
+def follow(username):
+    user = User.query.filter_by(username = username).first()
+    if user is None:
+        flash('User {} not found.'.format(username))
+        return redirect(url_for('index'))
+    if user == current_user:
+        flash('You cannot follow yourself!')
+        return redirect(url_for('user'),username = user.username)
+    current_user.follow(user)
+    db.session.commit()
+    return redirect(url_for('user',username = user.username))
+
+@app.route('/unfollow/<username>')
+@login_required
+def unfollow(username):
+    user = User.query.filter_by(username = username).first()
+    if user is None:
+        flash('User {} not found.'.format(username))
+        return redirect(url_for('index'))
+    if user == current_user:
+        flash('You cannot unfollow yourself!')
+        return redirect(url_for('user'),username = user.username)
+    current_user.unfollow(user)
+    db.session.commit()
+    flash('You are not following {}.'.format(username))
+    return redirect(url_for('user', username=username))
 
