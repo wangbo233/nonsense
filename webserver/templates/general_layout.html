@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="../static/../static/../static/media/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../static/media/favicon.png">
     <link rel="stylesheet" href="../static/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/css/icofont.min.css">
     <link rel="stylesheet" href="../static/css/slick.css">
@@ -24,4 +24,241 @@
     <!-- Google Web Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
 </head>
+
+<body class="bg-link-water">
+    <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+    <a href="#wrapper" data-type="section-switch" class="scrollup">
+        <i class="icofont-bubble-up"></i>
+    </a>
+    <!-- Preloader Start Here -->
+    <div id="preloader"></div>
+    <!-- Preloader End Here -->
+    <div id="wrapper" class="wrapper">
+        <!-- Top Header -->
+        <header class="fixed-header">
+            <div class="header-menu">
+                <div class="navbar">
+                    <div class="nav-item d-none d-sm-block">
+                        <div class="header-logo">
+                            <a href="{{url_for('index')}}"><img src="/static/media/logo.png" alt="Cirkle"></a>
+                        </div>
+                    </div>
+                    <div class="nav-item nav-top-menu">
+                        <nav id="dropdown" class="template-main-menu">
+                            <ul class="menu-content">
+                                <li class="header-nav-item">
+                                    <a href="#" class="menu-link have-sub">帖子</a>
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="{{url_for('followed_blog',username = current_user.username)}}">我关注的</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{url_for('blogs')}}">所有帖子</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="header-nav-item">
+                                    <a href="#" class="menu-link have-sub">圈子</a>
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="{{url_for('followed_users',username = current_user.username)}}">我的关注</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{url_for('followers',username = current_user.username)}}">我的粉丝</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="header-nav-item">
+                                    <a href="{{url_for('user',username = current_user.username)}}" class="menu-link">个人主页</a>
+                                </li>
+                                <li class="header-nav-item">
+                                    <a href="{{url_for('new')}}" class="menu-link">写文章</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="nav-item header-control">
+                        <div class="inline-item d-none d-md-block">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search here.......">
+                                <div class="input-group-append">
+                                    <button class="submit-btn" type="button"><i class="icofont-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inline-item">
+                            <div class="dropdown dropdown-admin">
+                                <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    <span class="media">
+                                        <span class="item-img">
+                                            <img src="../static/user_pictures/{{current_user.picture}}" alt="Chat" height="50" width="50">
+                                            <span class="acc-verified"><i class="icofont-check"></i></span>
+                                        </span>
+                                        <span class="media-body">
+                                            <span class="item-title">Rebeca</span>
+                                        </span>
+                                    </span>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <ul class="admin-options">
+                                        <li><a href="{{url_for('edit_profile')}}">修改我的档案</a></li>
+                                        <li><a href="#">群组</a></li>
+                                        <li><a href="{{url_for('logout')}}">退出登录</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        {%block content%}
+
+        {%endblock%}
+
+        <!--=====================================-->
+            <!--=        Footer Area Start       	=-->
+            <!--=====================================-->
+            <footer class="footer-wrap footer-dashboard">
+                <div class="main-footer">
+                    <div class="container">
+                        <div class="row row-cols-lg-4 row-cols-sm-2 row-cols-1">
+                            <div class="col">
+                                <div class="footer-box">
+                                    <div class="footer-logo">
+                                        <a href="index.html"><img src="../static/media/logo_dark.png" alt="Logo"></a>
+                                    </div>
+                                    <p>Dorem ipsum dolor sit amet consec adipisicing elit sed do eiusmod por incidiut labore et loreLorem ipsum kelly amieo dolorey.</p>
+                                </div>
+                            </div>
+                            <div class="col d-flex justify-content-lg-center">
+                                <div class="footer-box">
+                                    <h3 class="footer-title">
+                                        Important Links
+                                    </h3>
+                                    <div class="footer-link">
+                                        <ul>
+                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="about-us.html">About us</a></li>
+                                            <li><a href="shop.html">Shop</a></li>
+                                            <li><a href="contact.html">Contacts</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col d-flex justify-content-lg-center">
+                                <div class="footer-box">
+                                    <h3 class="footer-title">
+                                        Community
+                                    </h3>
+                                    <div class="footer-link">
+                                        <ul>
+                                            <li><a href="newsfeed.html">NewsFeed</a></li>
+                                            <li><a href="user-timeline.html">Profile</a></li>
+                                            <li><a href="user-friends.html">Friends</a></li>
+                                            <li><a href="user-groups.html">Groups</a></li>
+                                            <li><a href="forums.html">Forums</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col d-flex justify-content-lg-center">
+                                <div class="footer-box">
+                                    <h3 class="footer-title">
+                                        Followers
+                                    </h3>
+                                    <div class="footer-link">
+                                        <ul>
+                                            <li><a href="https://www.facebook.com/">facebook</a></li>
+                                            <li><a href="https://twitter.com/">twitter</a></li>
+                                            <li><a href="https://www.instagram.com/">instagram</a></li>
+                                            <li><a href="https://www.youtube.com/">Youtube</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="footer-copyright">Copy© cirkle 2021. All Rights By <a href="http://www.bootstrapmb.com/">bootstrapmb</a></div>
+                </div>
+            </footer>
+        </div>
+        <!-- Chat Modal Here -->
+        <div class="chat-conversion-box" id="chat-box-modal" tabindex="-1" aria-labelledby="chat-modal-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title" id="chat-modal-label">Fahim Rahman <span class="online"></span></h6>
+                        <div class="action-icon">
+                            <button class="chat-shrink"><i class="icofont-minus"></i></button>
+                            <button type="button" class="close chat-close chat-open" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="chat-conversion">
+                            <li class="chat-others">
+                                <div class="author-img">
+                                    <img src="../static/media/figure/chat_12.jpg" alt="Chat">
+                                </div>
+                                <div class="author-text">
+                                    <span>How are you Fahim vai ? Tommorow office will be your last day of Bachelor life.</span>
+                                </div>
+                            </li>
+                            <li class="chat-you">
+                                <div class="author-img">
+                                    <img src="../static/media/figure/chat_11.jpg" alt="Chat">
+                                </div>
+                                <div class="author-text">
+                                    <span>hmm That's great</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Write your text here.....">
+                                <div class="chat-plus-icon"><i class="icofont-plus-circle"></i></div>
+                                <div class="file-attach-icon">
+                                    <a href="#"><i class="icofont-slightly-smile"></i></a>
+                                    <a href="#"><i class="icofont-camera"></i></a>
+                                    <a href="#"><i class="icofont-image"></i></a>
+                                    <a href="#"><i class="icofont-mic"></i></a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Jquery Js -->
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/imagesloaded.pkgd.min.js"></script>
+    <script src="../static/js/isotope.pkgd.min.js"></script>
+    <script src="../static/js/slick.min.js"></script>
+    <script src="../static/js/sal.js"></script>
+    <script src="../static/js/jquery.magnific-popup.min.js"></script>
+    <script src="../static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="../static/js/select2.min.js"></script>
+    <script src="../static/js/jquery.elevatezoom.js"></script>
+    <script src="../static/js/validator.min.js"></script>
+    <script src="http://www.google.cn/maps/api/js?key=AIzaSyBtmXSwv4YmAKtcZyyad9W7D4AC08z0Rb4"></script>
+
+    <!-- Site Scripts -->
+    <script src="../static/js/app.js"></script>
+</body>
+
+</html>
+
+
 

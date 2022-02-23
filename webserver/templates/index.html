@@ -79,137 +79,32 @@
                                 </button>
                                 <ul class="menu-content">
                                     <li class="header-nav-item">
-                                        <a href="index.html" class="menu-link active">Home</a>
-                                    </li>
-                                    <li class="hide-on-mobile-menu">
-                                        <a href="#" class="menu-link have-sub">Community</a>
-                                        <ul class="mega-menu mega-menu-col-2">
-                                            <li>
-                                                <ul class="sub-menu">
-                                                    <li>
-                                                        <a href="newsfeed.html">NewsFeed</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="user-timeline.html">Profile Timeline</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="user-about.html">Profile About</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="user-friends.html">Profile Friends</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="user-groups.html">Profile Group</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="user-photo.html">Profile Photo</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="user-video.html">Profile Video</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <ul class="sub-menu">
-                                                    <li>
-                                                        <a href="user-badges.html">Profile Badges</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="forums.html">Forums</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="forums-forum.html">Forums Topic</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="forums-timeline.html">Forums Timeline</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="forums-info.html">Forums Info</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="forums-members.html">Forums Members</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="forums-media.html">Forums Media</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="header-nav-item hide-on-desktop-menu">
-                                        <a href="#" class="menu-link have-sub">Community</a>
+                                        <a href="#" class="menu-link have-sub">帖子</a>
                                         <ul class="sub-menu">
                                             <li>
-                                                <a href="newsfeed.html">NewsFeed</a>
+                                                <a href="{{url_for('followed_blog',username = current_user.username)}}">我关注的</a>
                                             </li>
                                             <li>
-                                                <a href="user-timeline.html">Profile Timeline</a>
-                                            </li>
-                                            <li>
-                                                <a href="user-about.html">Profile About</a>
-                                            </li>
-                                            <li>
-                                                <a href="user-friends.html">Profile Friends</a>
-                                            </li>
-                                            <li>
-                                                <a href="user-groups.html">Profile Group</a>
-                                            </li>
-                                            <li>
-                                                <a href="user-photo.html">Profile Photo</a>
-                                            </li>
-                                            <li>
-                                                <a href="user-video.html">Profile Video</a>
-                                            </li>
-                                            <li>
-                                                <a href="user-badges.html">Profile Badges</a>
-                                            </li>
-                                            <li>
-                                                <a href="forums.html">Forums</a>
-                                            </li>
-                                            <li>
-                                                <a href="forums-forum.html">Forums Topic</a>
-                                            </li>
-                                            <li>
-                                                <a href="forums-timeline.html">Forums Timeline</a>
-                                            </li>
-                                            <li>
-                                                <a href="forums-info.html">Forums Info</a>
-                                            </li>
-                                            <li>
-                                                <a href="forums-members.html">Forums Members</a>
-                                            </li>
-                                            <li>
-                                                <a href="forums-media.html">Forums Media</a>
+                                                <a href="{{url_for('blogs')}}">所有帖子</a>
                                             </li>
                                         </ul>
                                     </li>
                                     <li class="header-nav-item">
-                                        <a href="/blogs" class="menu-link active">Blogs</a>
-                                    </li>
-                                    <li class="header-nav-item">
-                                        <a href="#" class="menu-link have-sub">Pages</a>
+                                        <a href="#" class="menu-link have-sub">圈子</a>
                                         <ul class="sub-menu">
                                             <li>
-                                                <a href="about-us.html">About</a>
+                                                <a href="{{url_for('followed_users',username = current_user.username)}}">我的关注</a>
                                             </li>
                                             <li>
-                                                <a href="contact.html">Contact Us</a>
+                                                <a href="{{url_for('followers',username = current_user.username)}}">我的粉丝</a>
                                             </li>
                                         </ul>
                                     </li>
                                     <li class="header-nav-item">
-                                        <a href="#" class="menu-link have-sub">Shop</a>
-                                        <ul class="sub-menu">
-                                            <li>
-                                                <a href="shop.html">Shop</a>
-                                            </li>
-                                            <li>
-                                                <a href="single-shop.html">Shop Details</a>
-                                            </li>
-                                        </ul>
+                                        <a href="{{url_for('user',username = current_user.username)}}" class="menu-link">个人主页</a>
                                     </li>
                                     <li class="header-nav-item">
-                                        <a href="contact.html" class="menu-link">Contact Us</a>
+                                        <a href="{{url_for('new')}}" class="menu-link">写文章</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -224,13 +119,9 @@
                                         <a href="#"><i class="icofont-pinterest"></i></a>
                                         <a href="#"><i class="icofont-skype"></i></a>
                                     </li>
-                                    <li class="header-search-icon">
-                                        <a href="#header-search" title="Search"><i class="icofont-search"></i></a>
-                                    </li>
                                     <li class="login-btn">
                                         {%if current_user.is_authenticated%}
                                             <a href="/logout" class="item-btn"><i class="fas fa-user"></i>退出登陆</a>
-                                            <a href="/account" class="item-btn"><i class="fas fa-user"></i>个人主页</a>
                                         {%else%}
                                        
                                             <a href="/login" class="item-btn"><i class="fas fa-user"></i>登陆</a>
@@ -342,31 +233,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <!--=====================================-->
-        <!--=         Community Start       	=-->
-        <!--=====================================-->
-        <section class="community-network">
-            <ul class="map-marker">
-                <li><img src="/static//static/media/banner/marker_1.png" alt="marker"></li>
-                <li><img src="/static//static/media/banner/marker_2.png" alt="marker"></li>
-                <li><img src="/static//static/media/banner/marker_3.png" alt="marker"></li>
-                <li><img src="/static//static/media/banner/marker_4.png" alt="marker"></li>
-                <li><img src="/static//static/media/banner/marker_5.png" alt="marker"></li>
-            </ul>
-            <div class="container">
-                <div class="row justify-content-end">
-                    <div class="col-lg-6">
-                        <div class="community-content">
-                            <h2 class="item-title">129 Countries We Build Our Largest Community in <span>Cirkle Network</span></h2>
-                            <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also leap electronic typesetting, remaining essentially.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-shape" data-sal="slide-left" data-sal-duration="500" data-sal-delay="500">
-                <img src="/static/media/figure/shape_7.png" alt="bg">
             </div>
         </section>
         <!--=====================================-->
@@ -503,8 +369,8 @@
                     </div>
                 </div>
                 <div class="see-all-btn">
-                    <a href="forums-members.html" class="button-slide">
-                        <span class="btn-text">Discover All Member</span>
+                    <a href="{{url_for('users')}}" class="button-slide">
+                        <span class="btn-text">发现所有用户</span>
                         <span class="btn-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21px" height="10px">
                                 <path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M16.671,9.998 L12.997,9.998 L16.462,6.000 L5.000,6.000 L5.000,4.000 L16.462,4.000 L12.997,0.002 L16.671,0.002 L21.003,5.000 L16.671,9.998 ZM17.000,5.379 L17.328,5.000 L17.000,4.621 L17.000,5.379 ZM-0.000,4.000 L3.000,4.000 L3.000,6.000 L-0.000,6.000 L-0.000,4.000 Z" />
@@ -540,109 +406,6 @@
                         <div class="why-choose-img">
                             <div class="image-box">
                                 <img src="/static/media/figure/why_choose_1.jpg" alt="image">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--=====================================-->
-        <!--=         Location Find Start       =-->
-        <!--=====================================-->
-        <section class="section location-find">
-            <div class="container">
-                <div class="section-heading">
-                    <h2 class="heading-title">Find People Near You</h2>
-                    <p>when an unknown printer took a galley of type and meeting fari scrambled it to make a type specimen book. </p>
-                </div>
-                <div class="row gutters-20">
-                    <div class="col-lg-6">
-                        <div class="location-box">
-                            <div class="item-img">
-                                <a href="user-friends.html">
-                                    <img src="/static/media/location/location_1.jpg" alt="Newyork City">
-                                </a>
-                            </div>
-                            <div class="item-content">
-                                <h3 class="item-title"><a href="user-friends.html">Newyork City</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="row gutters-20">
-                            <div class="col-sm-6">
-                                <div class="location-box">
-                                    <div class="item-img">
-                                        <a href="user-friends.html">
-                                            <img src="/static/media/location/location_2.jpg" alt="Newyork City">
-                                        </a>
-                                    </div>
-                                    <div class="item-content">
-                                        <h3 class="item-title"><a href="user-friends.html">Boston</a></h3>
-                                    </div>
-                                </div>
-                                <div class="location-box">
-                                    <div class="item-img">
-                                        <a href="user-friends.html">
-                                            <img src="/static/media/location/location_3.jpg" alt="Newyork City">
-                                        </a>
-                                    </div>
-                                    <div class="item-content">
-                                        <h3 class="item-title"><a href="user-friends.html">California</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="location-box">
-                                    <div class="item-img">
-                                        <a href="user-friends.html">
-                                            <img src="/static/media/location/location_2.jpg" alt="Newyork City">
-                                        </a>
-                                    </div>
-                                    <div class="item-content">
-                                        <h3 class="item-title"><a href="user-friends.html">Kancas City</a></h3>
-                                    </div>
-                                </div>
-                                <div class="location-box">
-                                    <div class="item-img">
-                                        <a href="user-friends.html">
-                                            <img src="/static/media/location/location_4.jpg" alt="Newyork City">
-                                        </a>
-                                    </div>
-                                    <div class="item-content">
-                                        <h3 class="item-title"><a href="user-friends.html">Los Angeles</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--=====================================-->
-        <!--=         Banner Apps  Start       	=-->
-        <!--=====================================-->
-        <section class="banner-apps">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 d-flex align-items-center">
-                        <div class="banner-content">
-                            <h2 class="item-title">Fully Responsive Cirkle WordPress Theme</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-                            <a href="https://themeforest.net/user/radiustheme/portfolio" class="button-slide">
-                                <span class="btn-text">Purchase Now</span>
-                                <span class="btn-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21px" height="10px">
-                                        <path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M16.671,9.998 L12.997,9.998 L16.462,6.000 L5.000,6.000 L5.000,4.000 L16.462,4.000 L12.997,0.002 L16.671,0.002 L21.003,5.000 L16.671,9.998 ZM17.000,5.379 L17.328,5.000 L17.000,4.621 L17.000,5.379 ZM-0.000,4.000 L3.000,4.000 L3.000,6.000 L-0.000,6.000 L-0.000,4.000 Z" />
-                                    </svg>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="banner-img">
-                            <div class="apps-view">
-                                <img src="/static/media/banner/apps.png" alt="Apps">
                             </div>
                         </div>
                     </div>

@@ -3,7 +3,6 @@ from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from datetime import datetime
 from flask_login import  UserMixin,current_user
 
-
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -72,7 +71,7 @@ class User(db.Model,UserMixin):
         followed = Blog.query.join(
             followers,(followers.c.followed_id == Blog.user_id)).filter(
                 followers.c.follower_id == self.id)
-        own = Blog.query.filter_by(user_id=self.id)
+        own = Blog.query.filter_by(user_id = self.id)
         return followed.union(own).order_by(Blog.pub_date.desc())
 
     #生成一个token，用于修改密码

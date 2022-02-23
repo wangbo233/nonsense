@@ -49,6 +49,7 @@ def register():
     return render_template('register.html',form = register_form)
 
 @app.route('/logout')
+@login_required
 def logout():
     logout_user()
     return redirect(url_for("index"))
@@ -63,6 +64,7 @@ def save_picture(pic):
     return pic_filename
 
 @app.route('/profile/edit',methods = ['GET','POST'])
+@login_required
 def edit_profile():
     form = UserInfoForm()
     if form.validate_on_submit():
@@ -114,6 +116,14 @@ def user_blogs(username):
     user = User.query.filter_by(username=username).first_or_404()
     blogs = Blog.query.filter_by(author = user).order_by(Blog.pub_date.desc()).paginate(page=page,per_page=6)
     return render_template('user-blogs.html',blogs = blogs,user=user) 
+
+@app.route('/blog/followed_by_<string:username>')
+@login_required
+def followed_blog(username):
+    page = request.args.get('page',1,type=int)
+    user = User.query.filter_by(username=username).first_or_404()
+    blogs = user.followed_blogs().paginate()
+    return render_template('blogs.html',blogs=blogs)
 
 @app.route('/users')
 @login_required
@@ -244,4 +254,20 @@ def unfollow(username):
     db.session.commit()
     flash('You are not following {}.'.format(username))
     return redirect(url_for('user', username=username))
+
+@app.route('/user/followed_by_<username>')
+@login_required
+def followed_users(username):
+    page = request.args.get('page',1,type=int)
+    user = User.query.filter_by(username = username).first()
+    followed = user.followed.order_by(User.id).paginate(per_page=6)
+    return render_template('users.html',users = followed)
+
+@app.route('/user/followers_of_<username>')
+@login_required
+def followers(username):
+    page = request.args.get('page',1,type=int)
+    user = User.query.filter_by(username = username).first()
+    followers = user.followers.order_by(User.id).paginate(per_page=6)
+    return render_template('users.html',users = followers)
 
