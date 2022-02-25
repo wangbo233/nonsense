@@ -30,9 +30,9 @@ def create_app(config_class=Config):
     from webserver.users.routes import users
     from webserver.blogs.routes import blogs
     from webserver.main.routes import main
-
+    from webserver.errors.error_handlers import errors
     app.register_blueprint(users)
     app.register_blueprint(blogs)
     app.register_blueprint(main)
-
+    app.register_blueprint(errors)
     return app
