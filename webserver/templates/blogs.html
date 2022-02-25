@@ -3,68 +3,68 @@
 
 <!-- Page Content -->
 <div class="page-content">
-
-<!--=====================================-->
-<!--=        Newsfeed  Area Start       =-->
-<!--=====================================-->
-<div class="container">
-    <div class="block-box user-search-bar justify-content-between">
-        <div class="box-item">
-            <div class="item-show-title">Total {{count}} Posts</div>
-        </div>
-        <div class="box-item search-filter">
-            <div class="dropdown">
-                <label>Order By:</label>
-                <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Newest Post</button>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">All Post</a>
-                    <a class="dropdown-item" href="#">Newest Post</a>
-                    <a class="dropdown-item" href="#">Oldest Post</a>
-                </div>
+    <!--=====================================-->
+    <!--=        Newsfeed  Area Start       =-->
+    <!--=====================================-->
+    <div class="container">
+        <div class="block-box user-search-bar justify-content-between">
+            <div class="box-item">
+                <div class="item-show-title">Total {{count}} Posts</div>
             </div>
-        </div>
-    </div>
-    <div class="row gutters-20">
-        {%for blog in blogs.items%}
-        <div class="col-lg-4 col-md-6">
-            <div class="block-box user-blog">
-                <div class="blog-img">
-                    <a href="#"><img src="../static/media/blog/blog_4.jpg" alt="Blog"></a>
-                </div>
-                <div class="blog-content">
-                    <div class="blog-category">
-                        <a href="#">Community</a>
-                        <a href="#">Inspiration</a>
+            <div class="box-item search-filter">
+                <div class="dropdown">
+                    <label>Order By:</label>
+                    <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Newest Post</button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#">All Post</a>
+                        <a class="dropdown-item" href="#">Newest Post</a>
+                        <a class="dropdown-item" href="#">Oldest Post</a>
                     </div>
-                    <h3 class="blog-title"><a href="/blogs/{{blog.id}}">{{blog.title}}</a></h3>
-                    <div class="blog-date"><i class="icofont-calendar"></i> 发布于{{blog.pub_date.strftime('%Y-%m-%d')}}</div>
-                </div>
-                <div class="blog-meta">
-                    <ul>
-                        <li class="blog-reaction">
-                            <div class="reaction-icon">
-                                <img src="../static/media/figure/reaction_1.png" alt="icon">
-                                <img src="../static/media/figure/reaction_2.png" alt="icon">
-                                <img src="../static/media/figure/reaction_3.png" alt="icon">
-                            </div>
-                            <div class="meta-text">+ 15 others</div>
-                        </li>
-                        <li><i class="icofont-comment"></i> 05</li>
-                    </ul>
                 </div>
             </div>
         </div>
+        <div class="row gutters-20">
+            {%for blog in blogs.items%}
+            <div class="col-lg-4 col-md-6">
+                <div class="block-box user-blog">
+                    <div class="blog-img">
+                        <a href="#"><img src="../static/media/blog/blog_4.jpg" alt="Blog"></a>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-category">
+                            <a href="#">Community</a>
+                            <a href="#">Inspiration</a>
+                        </div>
+                        <h3 class="blog-title"><a href="/blogs/{{blog.id}}">{{blog.title}}</a></h3>
+                        <div class="blog-date"><i class="icofont-calendar"></i> 发布于{{blog.pub_date.strftime('%Y-%m-%d')}}</div>
+                    </div>
+                    <div class="blog-meta">
+                        <ul>
+                            <li class="blog-reaction">
+                                <div class="reaction-icon">
+                                    <img src="../static/media/figure/reaction_1.png" alt="icon">
+                                    <img src="../static/media/figure/reaction_2.png" alt="icon">
+                                    <img src="../static/media/figure/reaction_3.png" alt="icon">
+                                </div>
+                                <div class="meta-text">+ 15 others</div>
+                            </li>
+                            <li><i class="icofont-comment"></i> 05</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% for page_num in blogs.iter_pages(left_edge=1,right_edge=1,left_current=1,right_current = 2) %}
+            {% if page_num%}
+                {% if blogs.page == page_num%}
+                    <a class = "btn btn-info mb-10" href="{{ url_for('blogs.all_blogs',page=page_num) }}">{{page_num}}</a>
+                {% else %}
+                    <a class = "btn btn-outline-info mb-10" href="{{ url_for('blogs.all_blogs',page=page_num) }}">{{page_num}}</a>
+                {% endif %}
+            {% else %}
+            {% endif %}
         {% endfor %}
     </div>
-    {% for page_num in blogs.iter_pages(left_edge=1,right_edge=1,left_current=1,right_current = 2) %}
-        {% if page_num%}
-            {% if blogs.page == page_num%}
-                <a class = "btn btn-info mb-10" href="{{ url_for('blogs',page=page_num) }}">{{page_num}}</a>
-            {% else %}
-                <a class = "btn btn-outline-info mb-10" href="{{ url_for('blogs',page=page_num) }}">{{page_num}}</a>
-            {% endif %}
-        {% else %}
-        {% endif %}
-    {% endfor %}
 </div>
 {%endblock%}

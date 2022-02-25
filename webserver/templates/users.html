@@ -578,19 +578,19 @@
                                             </a>
                                         </div>
                                         <div class="profile-name">
-                                            <h4 class="author-name"><a href="{{url_for('user',username=user.username)}}">{{user.username}}</a></h4>
+                                            <h4 class="author-name"><a href="{{url_for('users.user',username=user.username)}}">{{user.username}}</a></h4>
                                         </div>
                                     </div>
                                     <br>
                                     <ul class="author-statistics">
                                         <li>
-                                            <a href="{{url_for('user_blogs',username = user.username)}}"><span class="item-number">{{user.posts |length}}</span><span class="item-text">POSTS</span></a>
+                                            <a href="{{url_for('blogs.user_blogs',username = user.username)}}"><span class="item-number">{{user.posts |length}}</span><span class="item-text">POSTS</span></a>
                                         </li>
                                         <li>
-                                            <a href="{{url_for('followers',username = user.username)}}"><span class="item-number">{{user.followers.count()}}</span> <span class="item-text">粉丝</span></a>
+                                            <a href="{{url_for('users.followers',username = user.username)}}"><span class="item-number">{{user.followers.count()}}</span> <span class="item-text">粉丝</span></a>
                                         </li>
                                         <li>
-                                            <a href="{{url_for('followed_users',username = user.username)}}"><span class="item-number">{{user.followed.count()}}</span> <span class="item-text">关注</span></a>
+                                            <a href="{{url_for('users.followed_users',username = user.username)}}"><span class="item-number">{{user.followed.count()}}</span> <span class="item-text">关注</span></a>
                                         </li>
                                     </ul>
                                 </div>

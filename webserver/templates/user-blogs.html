@@ -58,9 +58,9 @@
         {% for page_num in blogs.iter_pages(left_edge=1,right_edge=1,left_current=1,right_current = 2) %}
             {% if page_num%}
                 {% if blogs.page == page_num%}
-                    <a class = "btn btn-info mb-10" href="{{ url_for('blogs',page=page_num) }}">{{page_num}}</a>
+                    <a class = "btn btn-info mb-10" href="{{ url_for('blogs.all_blogs',page=page_num) }}">{{page_num}}</a>
                 {% else %}
-                    <a class = "btn btn-outline-info mb-10" href="{{ url_for('blogs',page=page_num) }}">{{page_num}}</a>
+                    <a class = "btn btn-outline-info mb-10" href="{{ url_for('blogs.all_blogs',page=page_num) }}">{{page_num}}</a>
                 {% endif %}
             {% else %}
             {% endif %}

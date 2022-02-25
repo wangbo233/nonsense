@@ -82,10 +82,10 @@
                                         <a href="#" class="menu-link have-sub">帖子</a>
                                         <ul class="sub-menu">
                                             <li>
-                                                <a href="{{url_for('followed_blog',username = current_user.username)}}">我关注的</a>
+                                                <a href="{{url_for('blogs.followed_blog',username = current_user.username)}}">我关注的</a>
                                             </li>
                                             <li>
-                                                <a href="{{url_for('blogs')}}">所有帖子</a>
+                                                <a href="{{url_for('blogs.all_blogs')}}">所有帖子</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -93,18 +93,18 @@
                                         <a href="#" class="menu-link have-sub">圈子</a>
                                         <ul class="sub-menu">
                                             <li>
-                                                <a href="{{url_for('followed_users',username = current_user.username)}}">我的关注</a>
+                                                <a href="{{url_for('users.followed_users',username = current_user.username)}}">我的关注</a>
                                             </li>
                                             <li>
-                                                <a href="{{url_for('followers',username = current_user.username)}}">我的粉丝</a>
+                                                <a href="{{url_for('users.followers',username = current_user.username)}}">我的粉丝</a>
                                             </li>
                                         </ul>
                                     </li>
                                     <li class="header-nav-item">
-                                        <a href="{{url_for('user',username = current_user.username)}}" class="menu-link">个人主页</a>
+                                        <a href="{{url_for('users.user',username = current_user.username)}}" class="menu-link">个人主页</a>
                                     </li>
                                     <li class="header-nav-item">
-                                        <a href="{{url_for('new')}}" class="menu-link">写文章</a>
+                                        <a href="{{url_for('blogs.new')}}" class="menu-link">写文章</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -369,7 +369,7 @@
                     </div>
                 </div>
                 <div class="see-all-btn">
-                    <a href="{{url_for('users')}}" class="button-slide">
+                    <a href="{{url_for('users._users')}}" class="button-slide">
                         <span class="btn-text">发现所有用户</span>
                         <span class="btn-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21px" height="10px">
