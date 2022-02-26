@@ -1,4 +1,5 @@
 import os
+from redis import Redis
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
@@ -17,7 +18,6 @@ login_manager = LoginManager()
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
-
     db.init_app(app)
     bcrypt.init_app(app)
     migrate.init_app(app)
@@ -34,5 +34,7 @@ def create_app(config_class=Config):
     app.register_blueprint(users)
     app.register_blueprint(blogs)
     app.register_blueprint(main)
+
+    app.redis = Redis.from_url(app.config['REDIS_URL'])
 
     return app

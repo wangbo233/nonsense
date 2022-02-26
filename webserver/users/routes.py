@@ -1,8 +1,8 @@
-from flask import Blueprint, request, render_template, redirect, flash, url_for
+from flask import Blueprint, request, render_template, redirect, flash, url_for, current_app
 from flask_login import login_required, current_user, login_user, logout_user
 from webserver import bcrypt
 from webserver.users.forms import LoginForm, RegisterForm, UserInfoForm, RequestRestForm, ResetPasswordForm
-from webserver.users.utils import save_picture, send_reset_email
+from webserver.users.utils import save_picture, send_reset_email_via_queue
 from webserver.models import User, db
 
 users = Blueprint('users', __name__)
@@ -46,8 +46,6 @@ def register():
             email=register_form.email.data,
             password=hashed_passwd
         )
-        #print(user)
-        #db.create_all()
         db.session.add(user)
         db.session.commit()
         flash("注册成功!", 'success')
@@ -109,7 +107,9 @@ def reset_request():
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         # 发送邮件
-        send_reset_email(user)
+        # send_reset_email(user)
+        print(request.host_url)
+        send_reset_email_via_queue(user, current_app.redis, request.host_url)
         flash(f'已经将重置密码邮件发送到您的邮箱:{user.email}，请查看该邮件', 'info')
         return redirect(url_for('users.login'))
     return render_template('reset_request.html', title="邮箱重置密码", form=form)

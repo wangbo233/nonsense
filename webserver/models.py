@@ -2,7 +2,7 @@ from flask import current_app
 from webserver import db, login_manager
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from datetime import datetime
-from flask_login import UserMixin, current_user
+from flask_login import UserMixin
 import redis
 import rq
 
