@@ -9,10 +9,6 @@
         <div class="block-box user-single-blog">
             <div class="blog-content-wrap">
                 <div class="blog-entry-header">
-                    <div class="entry-category">
-                        <a href="#">Community</a>
-                        <a href="#">Inspiration</a>
-                    </div>
                     <h2 class="entry-title">{{blog.title}}</h2>
                     <div class="row align-items-center">
                         <div class="col-lg-8">
@@ -21,9 +17,8 @@
                                     <img src="../static/media/figure/chat_7.jpg" alt="Chat">
                                     By <a href="#">{{blog.author.username}}</a>
                                 </li>
-                                <li><i class="icofont-calendar"></i> 15 October, 2020</li>
+                                <li><i class="icofont-calendar"></i> {{ blog.pub_date }}</li>
                                 <li><i class="icofont-comment"></i> Comments: 05</li>
-                                <li><i class="icofont-share"></i> Share: 02</li>
                             </ul>
                         </div>
                         <div class="col-lg-4">
@@ -110,98 +105,7 @@
                 </div>
             </div>
         </div>
-        <div class="realated-blog">
-            <div class="block-box blog-heading">
-                <h3 class="heading-title">Related Blog Posts</h3>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="block-box user-blog">
-                        <div class="blog-img">
-                            <a href="#"><img src="../static/media/blog/blog_4.jpg" alt="Blog"></a>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-category">
-                                <a href="#">Community</a>
-                                <a href="#">Inspiration</a>
-                            </div>
-                            <h3 class="blog-title"><a href="#">Spoke with the developer sety 2020 Gaming Area</a></h3>
-                            <div class="blog-date"><i class="icofont-calendar"></i> 15 October, 2020</div>
-                            <p>when ann unknown printer took galley type and scrambled it to make aretype specimen book has survived not only.</p>
-                        </div>
-                        <div class="blog-meta">
-                            <ul>
-                                <li class="blog-reaction">
-                                    <div class="reaction-icon">
-                                        <img src="../static/media/figure/reaction_1.png" alt="icon">
-                                        <img src="../static/media/figure/reaction_2.png" alt="icon">
-                                        <img src="../static/media/figure/reaction_3.png" alt="icon">
-                                    </div>
-                                    <div class="meta-text">+ 15 others</div>
-                                </li>
-                                <li><i class="icofont-comment"></i> 05</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="block-box user-blog">
-                        <div class="blog-img">
-                            <a href="#"><img src="../static/media/blog/blog_5.jpg" alt="Blog"></a>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-category">
-                                <a href="#">Sporty</a>
-                            </div>
-                            <h3 class="blog-title"><a href="#">Spoke with the developer sety 2020 Gaming Area</a></h3>
-                            <div class="blog-date"><i class="icofont-calendar"></i> 15 October, 2020</div>
-                            <p>when ann unknown printer took galley type and scrambled it to make aretype specimen book has survived not only.</p>
-                        </div>
-                        <div class="blog-meta">
-                            <ul>
-                                <li class="blog-reaction">
-                                    <div class="reaction-icon">
-                                        <img src="../static/media/figure/reaction_1.png" alt="icon">
-                                        <img src="../static/media/figure/reaction_2.png" alt="icon">
-                                        <img src="../static/media/figure/reaction_3.png" alt="icon">
-                                    </div>
-                                    <div class="meta-text">+ 15 others</div>
-                                </li>
-                                <li><i class="icofont-comment"></i> 05</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="block-box user-blog">
-                        <div class="blog-img">
-                            <a href="#"><img src="../static/media/blog/blog_6.jpg" alt="Blog"></a>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-category">
-                                <a href="#">Community</a>
-                                <a href="#">Inspiration</a>
-                            </div>
-                            <h3 class="blog-title"><a href="#">Spoke with the developer sety 2020 Gaming Area</a></h3>
-                            <div class="blog-date"><i class="icofont-calendar"></i> 15 October, 2020</div>
-                            <p>when ann unknown printer took galley type and scrambled it to make aretype specimen book has survived not only.</p>
-                        </div>
-                        <div class="blog-meta">
-                            <ul>
-                                <li class="blog-reaction">
-                                    <div class="reaction-icon">
-                                        <img src="../static/media/figure/reaction_1.png" alt="icon">
-                                        <img src="../static/media/figure/reaction_2.png" alt="icon">
-                                        <img src="../static/media/figure/reaction_3.png" alt="icon">
-                                    </div>
-                                    <div class="meta-text">+ 15 others</div>
-                                </li>
-                                <li><i class="icofont-comment"></i> 05</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-    {%endblock%}
+    </div>
+</div>
+{%endblock%}

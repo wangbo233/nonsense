@@ -3,8 +3,6 @@ from webserver import db, login_manager
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from datetime import datetime
 from flask_login import UserMixin
-import redis
-import rq
 
 
 @login_manager.user_loader
@@ -45,8 +43,6 @@ class User(db.Model, UserMixin):
     favourite_movies = db.Column(db.Text)
     other_activities = db.Column(db.Text)
     posts = db.relationship('Blog', backref=db.backref('author', lazy=True))
-
-    tasks = db.relationship('Task', backref='user', lazy='dynamic')
 
     # 声明多对多的关注关系,将User实例关联到其他User实例
     # User是关系当中的右侧实体（被关注者）
@@ -100,32 +96,3 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f"<User: name:{self.username} email:{self.email}>"
-
-
-'''
-一旦任务随着请求的处理而启动，该请求随即结束，
-而该任务的所有上下文都将丢失。 
-因为希望应用程序跟踪每个用户正在运行的任务，所以需要使用数据库表来维护状态
-'''
-
-
-class Task(db.Model):
-    # 使用由RQ生成的作业标识符作为主键，而不依赖于数据库自动生成
-    id = db.Column(db.String(36), primary_key=True)
-    name = db.Column(db.String(128), index=True)
-    description = db.Column(db.String(128))
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    complete = db.Column(db.Boolean, default=False)
-
-    # 用给定的任务ID加载RQ Job实例
-    def get_rq_job(self):
-        try:
-            rq_job = rq.job.Job.fetch(self.id, connection=current_app.redis)
-        except (redis.exceptions.RedisError, rq.exceptions.NoSuchJobError):
-            return None
-        return rq_job
-
-    # 任务的进度
-    def get_progress(self):
-        job = self.get_rq_job()
-        return job.meta.get('progress', 0) if job is not None else 100
