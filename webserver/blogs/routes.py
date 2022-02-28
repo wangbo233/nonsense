@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, redirect, abort
+from flask import Blueprint, request, render_template, redirect, abort, current_app, url_for
 from flask_login import login_required, current_user
 from webserver.blogs.forms import BlogForm
 from webserver.models import Blog, User
@@ -12,7 +12,7 @@ blogs = Blueprint('blogs', __name__)
 def all_blogs():
     page = request.args.get('page', 1, type=int)
     # 倒序排序
-    blogs = Blog.query.order_by(Blog.pub_date.desc()).paginate(per_page=6)
+    blogs = Blog.query.order_by(Blog.pub_date.desc()).paginate(page=page, per_page=6)
     count = Blog.query.count()
     return render_template('blogs.html', blogs=blogs, count=count)
 
@@ -32,8 +32,15 @@ def new():
 
 @blogs.route('/blogs/<int:blog_id>')
 def blog(blog_id):
-    blog = Blog.query.get_or_404(blog_id)
-    return render_template('single-blog.html', title=blog.title, blog=blog)
+    #blog = Blog.query.get_or_404(blog_id)
+    conn = current_app.redis
+    page_key = "cache_blog_page:"+str(hash(blog_id))
+    content = conn.get(page_key)
+    if not content:
+        blog = Blog.query.get_or_404(blog_id)
+        content = render_template('single-blog.html', title=blog.title, blog=blog)
+        conn.setex(page_key, 300, content)
+    return content
 
 
 @blogs.route('/blogs/<int:blog_id>/update', methods=['GET', 'POST'])
@@ -46,8 +53,11 @@ def update_blog(blog_id):
     if form.validate_on_submit():
         blog.title = form.title.data
         blog.content = form.content.data
+        # 提交更新，更新数据库，并且删除缓存中的内容
+        conn = current_app.redis
+        conn.delete("cache_blog_page:"+str(hash(blog_id)))
         db.session.commit()
-        return redirect(f'/blogs/{blog.id}')
+        return redirect(url_for('blogs.blog', blog_id=blog_id))
     elif request.method == "GET":
         form.title.data = blog.title
         form.content.data = blog.content
@@ -62,6 +72,8 @@ def delete_blog(blog_id):
         abort(403)
     db.session.delete(blog)
     db.session.commit()
+    # 删除文章后，缓存中的页面也应该删除
+    current_app.redis.delete("cache_blog_page:"+str(hash(blog_id)))
     return redirect('/')
 
 

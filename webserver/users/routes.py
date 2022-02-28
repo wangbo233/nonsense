@@ -26,6 +26,7 @@ def login():
         user = User.query.filter_by(email=login_form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, login_form.password.data):
             login_user(user, remember=login_form.remember.data)
+            current_app.redis.delete("page_cache:"+str(hash(url_for('main.index'))))
             return redirect('/')
         else:
             flash("登陆信息有误，请检查您的邮箱或密码！", "danger")
@@ -56,6 +57,7 @@ def register():
 @users.route('/logout')
 @login_required
 def logout():
+    current_app.redis.delete("page_cache:" + str(hash(url_for('main.index'))))
     logout_user()
     return redirect(url_for("main.index"))
 

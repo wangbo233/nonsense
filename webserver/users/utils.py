@@ -30,14 +30,13 @@ def send_reset_email_via_queue(user, conn, root_url):
     }
     conn.rpush("queue:email", json.dumps(data))
 
-
+# 不断的查询队列，如果有邮件就发送
 def process_send_reset_email_via_queue(conn):
     while True:
         email_info = conn.blpop(['queue:email'], 30)
         if not email_info:
             continue
         email_data = json.loads(email_info[1])
-        print(email_data)
         send_reset_email(email_data)
 
 
