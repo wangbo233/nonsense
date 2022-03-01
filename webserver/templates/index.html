@@ -106,6 +106,9 @@
                                     <li class="header-nav-item">
                                         <a href="{{url_for('blogs.new')}}" class="menu-link">写文章</a>
                                     </li>
+                                    <li class="header-nav-item">
+                                        <a href="{{url_for('blogs.user_blogs',username=current_user.username)}}" class="menu-link">我的博客</a>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>

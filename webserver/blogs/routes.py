@@ -25,6 +25,7 @@ def new():
         blog = Blog(title=form.title.data, content=form.content.data, author=current_user)
         db.session.add(blog)
         db.session.commit()
+        current_app.redis.delete("cache_user_blogs:" + str(hash(blog.author.username)))
         # flash("文章已经成功发表!","success")
         return redirect('/blogs')
     return render_template('new-blog.html', form=form, subject="发布一篇新文章")
@@ -56,6 +57,7 @@ def update_blog(blog_id):
         # 提交更新，更新数据库，并且删除缓存中的内容
         conn = current_app.redis
         conn.delete("cache_blog_page:"+str(hash(blog_id)))
+        conn.delete("cache_user_blogs:"+str(hash(blog.author.username)))
         db.session.commit()
         return redirect(url_for('blogs.blog', blog_id=blog_id))
     elif request.method == "GET":
@@ -74,16 +76,23 @@ def delete_blog(blog_id):
     db.session.commit()
     # 删除文章后，缓存中的页面也应该删除
     current_app.redis.delete("cache_blog_page:"+str(hash(blog_id)))
+    current_app.redis.delete("cache_user_blogs:" + str(hash(blog.author.username)))
     return redirect('/')
 
 
 @blogs.route('/blog/<string:username>')
 @login_required
 def user_blogs(username):
-    page = request.args.get('page', 1, type=int)
-    user = User.query.filter_by(username=username).first_or_404()
-    blogs = Blog.query.filter_by(author=user).order_by(Blog.pub_date.desc()).paginate(page=page, per_page=6)
-    return render_template('user-blogs.html', blogs=blogs, user=user)
+    page_key = "cache_user_blogs:"+str(hash(username))
+    content = current_app.redis.get(page_key)
+    if not content:
+        page = request.args.get('page', 1, type=int)
+        user = User.query.filter_by(username=username).first_or_404()
+        blogs = Blog.query.filter_by(author=user).order_by(Blog.pub_date.desc()).paginate(page=page, per_page=6)
+    #return render_template('user-blogs.html', blogs=blogs, user=user)
+        content = render_template('user-blogs.html', blogs=blogs, user=user)
+        current_app.redis.setex(page_key, 300, content)
+    return content
 
 
 @blogs.route('/blog/followed_by_<string:username>')
