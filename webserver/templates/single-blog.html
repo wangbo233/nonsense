@@ -17,8 +17,7 @@
                                     <img src="../static/media/figure/chat_7.jpg" alt="Chat">
                                     By <a href="#">{{blog.author.username}}</a>
                                 </li>
-                                <li><i class="icofont-calendar"></i> {{ blog.pub_date }}</li>
-                                <li><i class="icofont-comment"></i> Comments: 05</li>
+                                <li><i class="icofont-calendar"></i> {{ blog.pub_date.strftime('%Y-%m-%d')}}</li>
                             </ul>
                         </div>
                         <div class="col-lg-4">
@@ -69,39 +68,6 @@
                                 </div>
                             </div>
                     {%endif%}
-                </div>
-                <div class="blog-footer">
-                    <div class="item-label">Choose your <span>Reaction!</span></div>
-                    <div class="reaction-icon">
-                        <a href="#"><img src="../static/media/figure/reaction_1.png" alt="Like"></a>
-                        <a href="#"><img src="../static/media/figure/reaction_6.png" alt="Like"></a>
-                        <a href="#"><img src="../static/media/figure/reaction_2.png" alt="Like"></a>
-                        <a href="#"><img src="../static/media/figure/reaction_7.png" alt="Like"></a>
-                        <a href="#"><img src="../static/media/figure/reaction_3.png" alt="Like"></a>
-                        <a href="#"><img src="../static/media/figure/reaction_5.png" alt="Like"></a>
-                    </div>
-                </div>
-                <div class="blog-comment-form">
-                    <h3 class="item-title">Leave a Comment</h3>
-                    <form>
-                        <div class="row gutters-20">
-                            <div class="col-lg-4 form-group">
-                                <input type="text" name="name" class="form-control" placeholder="Name">
-                            </div>
-                            <div class="col-lg-4 form-group">
-                                <input type="email" name="email" class="form-control" placeholder="E-mail">
-                            </div>
-                            <div class="col-lg-4 form-group">
-                                <input type="text" name="website" class="form-control" placeholder="website">
-                            </div>
-                            <div class="col-lg-12 form-group">
-                                <textarea name="message" id="message" class="form-control textarea" placeholder="Comments" cols="30" rows="7"></textarea>
-                            </div>
-                            <div class="col-lg-12 form-group">
-                                <input type="submit" class="submit-btn" name="post-comment" value="Post Comment">
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>

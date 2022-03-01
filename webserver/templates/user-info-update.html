@@ -16,8 +16,7 @@
                         <img src= "../static/user_pictures/{{current_user.picture}}" height="120" width="120">
                     </div>
                     <div class="media-body">
-                        <h3 class="item-title">Rebeca Powel</h3>
-                        <div class="item-subtitle">United State of America</div>
+                        <h3 class="item-title">{{ current_user.username}}</h3>
                         <ul class="item-social">
                             <li><a href="#" class="bg-fb"><i class="icofont-facebook"></i></a></li>
                             <li><a href="#" class="bg-twitter"><i class="icofont-twitter"></i></a></li>
@@ -26,9 +25,9 @@
                             <li><a href="#" class="bg-behance"><i class="icofont-behance"></i></a></li>
                         </ul>
                         <ul class="user-meta">
-                            <li>Posts: <span>30</span></li>
-                            <li>Comments: <span>12</span></li>
-                            <li>Views: <span>1.2k</span></li>
+                            <li>博客: <a href="{{ url_for('blogs.user_blogs',username=current_user.username) }}">{{ current_user.posts |length }}篇</a></li>
+                            <li>关注: <span>{{ current_user.followed.count() }}</span></li>
+                            <li>粉丝: <span>{{ current_user.followers.count() }}</span></li>
                         </ul>
                     </div>
                 </div>

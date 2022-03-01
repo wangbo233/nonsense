@@ -9,18 +9,7 @@
     <div class="container">
         <div class="block-box user-search-bar justify-content-between">
             <div class="box-item">
-                <div class="item-show-title">Total {{count}} Posts</div>
-            </div>
-            <div class="box-item search-filter">
-                <div class="dropdown">
-                    <label>Order By:</label>
-                    <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Newest Post</button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">All Post</a>
-                        <a class="dropdown-item" href="#">Newest Post</a>
-                        <a class="dropdown-item" href="#">Oldest Post</a>
-                    </div>
-                </div>
+                <div class="item-show-title">Total Posts:{{ user.posts |length }}</div>
             </div>
         </div>
         <div class="row gutters-20">
@@ -31,25 +20,9 @@
                         <a href="#"><img src="../static/media/blog/blog_4.jpg" alt="Blog"></a>
                     </div>
                     <div class="blog-content">
-                        <div class="blog-category">
-                            <a href="#">Community</a>
-                            <a href="#">Inspiration</a>
-                        </div>
+
                         <h3 class="blog-title"><a href="/blogs/{{blog.id}}">{{blog.title}}</a></h3>
                         <div class="blog-date"><i class="icofont-calendar"></i> 发布于{{blog.pub_date.strftime('%Y-%m-%d')}}</div>
-                    </div>
-                    <div class="blog-meta">
-                        <ul>
-                            <li class="blog-reaction">
-                                <div class="reaction-icon">
-                                    <img src="../static/media/figure/reaction_1.png" alt="icon">
-                                    <img src="../static/media/figure/reaction_2.png" alt="icon">
-                                    <img src="../static/media/figure/reaction_3.png" alt="icon">
-                                </div>
-                                <div class="meta-text">+ 15 others</div>
-                            </li>
-                            <li><i class="icofont-comment"></i> 05</li>
-                        </ul>
                     </div>
                 </div>
             </div>
