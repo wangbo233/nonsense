@@ -31,6 +31,7 @@ def create_app(config_class=Config):
     from webserver.blogs.routes import blogs
     from webserver.main.routes import main
     from webserver.api import api_bp
+
     app.register_blueprint(users)
     app.register_blueprint(blogs)
     app.register_blueprint(main)

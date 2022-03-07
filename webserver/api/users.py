@@ -2,14 +2,17 @@ from webserver.api import api_bp
 from flask import jsonify, request, url_for
 from webserver.models import User
 from webserver import db
+from webserver.api.auth import token_auth
 
 
 @api_bp.route('/users/<int:id>', methods=['GET'])
+@token_auth.login_required
 def get_user(id):
     return jsonify(User.query.get_or_404(id).to_dict(include_mail=True))
 
 
 @api_bp.route('/users', methods=['GET'])
+@token_auth.login_required
 def get_users():
     # 从请求的查询字符串中提取page和per_page，如果它们没有被定义，则分别使用默认值1和6
     page = request.args.get('page', 1, type=int)
@@ -19,6 +22,7 @@ def get_users():
 
 
 @api_bp.route('/users/<int:id>/followers', methods=['GET'])
+@token_auth.login_required
 def get_followers(id):
     user = User.query.get_or_404(id)
     page = request.args.get('page', 1, type=int)
@@ -28,6 +32,7 @@ def get_followers(id):
 
 
 @api_bp.route('/users/<int:id>/followed', methods=['GET'])
+@token_auth.login_required
 def get_followed(id):
     user = User.query.get_or_404(id)
     page = request.args.get('page', 1, type=int)
@@ -57,6 +62,7 @@ def create_user():
 
 
 @api_bp.route('/users/<int:id>', methods=['PUT'])
+@token_auth.login_required
 def update_user(id):
     user = User.query.get_or_404(id)
     data = request.get_json() or {}

@@ -24,6 +24,7 @@ def login():
     login_form = LoginForm()
     if login_form.validate_on_submit():
         user = User.query.filter_by(email=login_form.email.data).first()
+        # 检查密码是否正确
         if user and bcrypt.check_password_hash(user.password, login_form.password.data):
             login_user(user, remember=login_form.remember.data)
             current_app.redis.delete("page_cache:"+str(hash(url_for('main.index'))))
