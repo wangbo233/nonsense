@@ -12,7 +12,7 @@ users = Blueprint('users', __name__)
 @login_required
 def _users():
     page = request.args.get('page', 1, type=int)
-    users = User.query.order_by(User.id).paginate(per_page=6)
+    users = User.query.order_by(User.id).paginate(per_page=6, page=page)
     # blogs = Blog.query.filter_by(author = user)
     return render_template('users.html', users=users)
 
@@ -183,5 +183,5 @@ def followed_users(username):
 def followers(username):
     page = request.args.get('page', 1, type=int)
     user = User.query.filter_by(username=username).first()
-    followers = user.followers.order_by(User.id).paginate(per_page=6)
+    followers = user.followers.order_by(User.id).paginate(per_page=6, page=page)
     return render_template('users.html', users=followers)

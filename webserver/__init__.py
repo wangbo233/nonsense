@@ -30,10 +30,11 @@ def create_app(config_class=Config):
     from webserver.users.routes import users
     from webserver.blogs.routes import blogs
     from webserver.main.routes import main
-
+    from webserver.api import api_bp
     app.register_blueprint(users)
     app.register_blueprint(blogs)
     app.register_blueprint(main)
+    app.register_blueprint(api_bp, url_prefix='/api')
 
     app.redis = Redis.from_url(app.config['REDIS_URL'])
 

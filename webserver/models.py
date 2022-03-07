@@ -1,5 +1,5 @@
-from flask import current_app
-from webserver import db, login_manager
+from flask import current_app, url_for
+from webserver import db, login_manager, bcrypt
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from datetime import datetime
 from flask_login import UserMixin
@@ -16,6 +16,41 @@ followers = db.Table('followers',
                      db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
                      )
 
+"""
+这个mixin类需要作为父类添加到User模型中
+"""
+
+
+class PaginatedAPIMixin(object):
+    """
+    to_collection_dict()方法产生一个带有用户集合表示的字典，包括items，_meta和_links部分；
+    前三个参数是Flask-SQLAlchemy查询对象，页码和每页数据数量；
+
+    """
+
+    @staticmethod
+    def to_collection_dict(query, page, per_page, endpoint, **kwargs):
+        resources = query.paginate(page, per_page, False)
+        data = {
+            'items': [item.to_dict() for item in resources.items],
+            '_meta': {
+                'page': page,
+                'per_page': per_page,
+                'total_pages': resources.pages,
+                'total_items': resources.total
+            },
+            # 链接部分包括自引用以及指向下一页和上一页的链接
+            '_links': {
+                'self': url_for(endpoint, page=page, per_page=per_page,
+                                **kwargs),
+                'next': url_for(endpoint, page=page + 1, per_page=per_page,
+                                **kwargs) if resources.has_next else None,
+                'prev': url_for(endpoint, page=page - 1, per_page=per_page,
+                                **kwargs) if resources.has_prev else None
+            }
+        }
+        return data
+
 
 class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -30,7 +65,7 @@ class Blog(db.Model):
         return f"Post:{self.title}"
 
 
-class User(db.Model, UserMixin):
+class User(db.Model, UserMixin, PaginatedAPIMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -96,3 +131,29 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f"<User: name:{self.username} email:{self.email}>"
+
+    def to_dict(self, include_mail=False):
+        data = {
+            'id': self.id,
+            'username': self.username,
+            'picture': self.picture,
+            'follower_count': self.followers.count(),
+            'followed_count': self.followed.count(),
+            '_links': {
+                'self': url_for('api.get_user', id=self.id),
+                'followers': url_for('api.get_followers', id=self.id),
+                'followed': url_for('api.get_followed', id=self.id),
+            }
+        }
+        if include_mail:
+            data['email'] = self.email
+        return data
+
+    def from_dict(self, data, new_user=False):
+        for field in ['username', 'email']:
+            if field in data:
+                setattr(self, field, data[field])
+        if new_user and 'password' in data:
+            hashed_passwd = bcrypt.generate_password_hash(data['password']).decode('utf-8')
+            self.password = hashed_passwd
+            db.session.commit()

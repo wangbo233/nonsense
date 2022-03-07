@@ -51,4 +51,5 @@ def send_reset_email(email_data):
     {root_url + "reset_password/" + token}
     此链接会在十分钟后失效！
     '''
+    # print(msg.body)
     mail.send(msg)
